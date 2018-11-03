@@ -1,1 +1,4 @@
 *.out
+**/*.o
+**/*.tar.gz
+**/infix2rpn
