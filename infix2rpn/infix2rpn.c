@@ -31,6 +31,36 @@ _Bool isoperator(char c) {
     return false;
 }    
 
+_Bool is_invalid_character(char c) {
+    if (isoperator(c) | isdigit(c) | (c == '(') | (c ==')')) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+_Bool is_invalid_input(char *input) {
+    int par_open = 0;
+    int par_close = 0;
+    for (int i = 0; input[i] != 0; i++) {
+        char c = input[i];
+        if (is_invalid_character(c)) {
+            printf("Program was called with invalid character: %c", (char) c);
+            return true;
+        } 
+        if (c == '(') {
+            par_open++;
+        } else if (c == ')') {
+            par_close++;
+        }
+    }
+    if (par_open != par_close) {
+        printf("Program was called with invalid input. Opening and closing parenthesis count does not match");
+        return true;
+    }
+    return false;
+}
+
 void process_char(struct stack *s, char *input, int index) {
     char c = input[index];
     if (isoperator(c)) {
@@ -81,6 +111,11 @@ int main(int argc, char *argv[]) {
     }
 
     char *input = argv[1];
+
+    if (is_invalid_input(input)) {
+        return 1;
+    }
+
     struct stack *s = stack_init();
     
     for (int index = 0; input[index] != 0; index++) {
