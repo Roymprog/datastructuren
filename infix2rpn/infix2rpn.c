@@ -31,25 +31,47 @@ _Bool isoperator(char c) {
     return false;
 }    
 
-void process_char(struct stack *s, char c) {
+void process_char(struct stack *s, char *input, int index) {
+    char c = input[index];
     if (isoperator(c)) {
-            if ((stack_empty(s) == 0) & (precedence(c) >= precedence((char) stack_peek(s)))) {
-                char top = (char) stack_pop(s);
-                putchar(top);
-                putchar(' ');
-            } 
-            stack_push(s, c);      
-        } else {
-            putchar(c);
+        if ((stack_empty(s) == 0) & (precedence(c) >= precedence((char) stack_peek(s)))) {
+            char top = (char) stack_pop(s);
+            putchar(' ');
+            putchar(top);
+        } 
+        stack_push(s, c);      
+    } else if (isspace(c) | (c == '(') | (c == ')')) {
+        return;
+    } else {
+        if ((index != 0) & !isdigit(input[index - 1])) {
             putchar(' ');
         }
+        putchar(c);
+    }
 }
 
 void print_stack(struct stack *s) {
     while (stack_peek(s) != -1) {
-        putchar(stack_pop(s));
         putchar(' ');
+        putchar(stack_pop(s));
     }
+}
+
+int compute_subnotation(char *input, int *i) {
+    struct stack *substack = stack_init();
+    *i = *i + 1;
+
+    while (input[*i] != ')') {
+        if (input[*i] == '(') {
+            compute_subnotation(input, i);
+        }
+        process_char(substack, input, *i);
+        *i = *i + 1;
+    }
+    print_stack(substack);
+    free(substack);
+
+    return *i;
 }
 
 int main(int argc, char *argv[]) {
@@ -60,23 +82,12 @@ int main(int argc, char *argv[]) {
 
     char *input = argv[1];
     struct stack *s = stack_init();
-
-    for (int i = 0; input[i] != 0; i++) {
-        if (input[i] == '(') {
-            i++;
-            while (input[i] != ')') {
-                if (isspace(input[i])) {
-                    i++;
-                    continue;
-                }
-                process_char(s, input[i]);
-                i++;
-            }
-            print_stack(s);
-        } else if (isspace(input[i])) {
-            continue;
+    
+    for (int index = 0; input[index] != 0; index++) {
+        if (input[index] == '(') {
+            index = compute_subnotation(input, &index);
         } else {
-            process_char(s, input[i]);            
+            process_char(s, input, index);            
         }
     }
 
