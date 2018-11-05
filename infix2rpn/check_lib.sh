@@ -88,7 +88,7 @@ with_timeout () {
 
 check_error() {
     local extra="$1" outfile ret
-    shift
+    # shift
 
     if "$_BAILED"; then
         return
@@ -101,7 +101,7 @@ check_error() {
     if [[ "$ret" -ne 0 ]] && [[ "$ret" -ne 124 ]] && [[ "$ret" -ne 200 ]]; then
         [[ "$extra" != "0" ]] && grant "$extra"
     else
-        not_grant "$extra"
+        fail
         echo "Command: $*"
         echo 'Error output:'
         cat "$outfile"
