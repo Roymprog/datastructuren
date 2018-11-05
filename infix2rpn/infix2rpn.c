@@ -55,13 +55,13 @@ _Bool is_invalid_character(char c) {
     }
 }
 
+// Loops from i to beginning of input to find non-space char
+// returns "end of string" i.e. 0 if not found
 char find_prev_nonspace_char(char *input, int i) {
-    if (i == -1) {
-        return input[i];
-
-    }
-
-    while (isspace(input[i])) {
+    while (isspace(input[i]) | isbinaryoperator(input[i]) | (input[i] == ')')) {
+        if (i == 0) {
+            return 0;
+        }
         i--;
     }
 
@@ -69,20 +69,16 @@ char find_prev_nonspace_char(char *input, int i) {
 }
 
 char find_next_nonspace_char(char *input, int i) {
-    if (input[i] == 0) {
-        return input[i - 1];
-    }
-
-    while (isspace(input[i])) {
+    while (isspace(input[i]) | isbinaryoperator(input[i])) {
         i++;
     }
 
     return input[i];
 }
 
-_Bool invalid_operator_use(char *input, int i) {
-    char prev_nonspace = find_prev_nonspace_char(input, i - 1);
-    char next_nonspace = find_next_nonspace_char(input, i + 1);
+_Bool invalid_bin_op_use(char *input, int i) {
+    char prev_nonspace = find_prev_nonspace_char(input, i);
+    char next_nonspace = find_next_nonspace_char(input, i);
     if (!(isdigit(prev_nonspace) | (prev_nonspace == ')')) | !(isdigit(next_nonspace) | (next_nonspace == '('))) {
         return true;
     }
@@ -108,7 +104,7 @@ _Bool is_invalid_input(char *input) {
             }
             par_close++;
         } else if (isbinaryoperator(c)) {          
-            if (invalid_operator_use(input, i)) {
+            if (invalid_bin_op_use(input, i)) {
                 printf("Input contains binary operator %c without corresponding operands.", c);
                 return true;
             }
@@ -118,11 +114,13 @@ _Bool is_invalid_input(char *input) {
         printf("Program was called with invalid input. Opening and closing parenthesis count does not match.");
         return true;
     }
-    // Wait for reply from Simon on how to treat empty expressions
-    // if (i == 0 ){
-    //     printf("Program did not receive any input. ");
-    //     return true;
-    // }
+
+    // Exit on empty input as per Simon's reply in discussion
+    char next_nonspace = find_next_nonspace_char(input, 0);
+    if ((i == 0) | (next_nonspace == 0)) {
+        printf("Program did not receive any input. ");
+        return true;
+    }
 
     return false;
 }
