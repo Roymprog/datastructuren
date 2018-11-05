@@ -26,8 +26,15 @@ int precedence(char c){
     }
 }
 
+_Bool isfunction(char c) {
+    if ((c >= 'F') & (c <= 'Z')) {
+        return true;
+    }
+    return false;
+}
+
 _Bool isoperator(char c) {
-    if ((c == 'F') | (c == '~') | (c == '^') | (c == '*') | (c == '/') | (c == '+') | (c == '-')) {
+    if ((isfunction(c)) | (c == '~') | (c == '^') | (c == '*') | (c == '/') | (c == '+') | (c == '-')) {
         return true;
     }
     return false;
