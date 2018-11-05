@@ -19,6 +19,8 @@ int precedence(char c){
         return 4;
     } else if ((c == '+') | (c == '-')) {
         return 5;
+    } else if (c == '(') {
+        return 6;
     } else {
         return -1;
     }
@@ -32,7 +34,7 @@ _Bool isoperator(char c) {
 }    
 
 _Bool is_invalid_character(char c) {
-    if (isoperator(c) | isdigit(c) | (c == '(') | (c ==')')) {
+    if (isoperator(c) | isdigit(c) | isspace(c) | (c == '.') | (c == '(') | (c == ')')) {
         return false;
     } else {
         return true;
@@ -42,7 +44,8 @@ _Bool is_invalid_character(char c) {
 _Bool is_invalid_input(char *input) {
     int par_open = 0;
     int par_close = 0;
-    for (int i = 0; input[i] != 0; i++) {
+    int i;
+    for (i = 0; input[i] != 0; i++) {
         char c = input[i];
         if (is_invalid_character(c)) {
             printf("Program was called with invalid character: %c", (char) c);
@@ -55,10 +58,27 @@ _Bool is_invalid_input(char *input) {
         }
     }
     if (par_open != par_close) {
-        printf("Program was called with invalid input. Opening and closing parenthesis count does not match");
+        printf("Program was called with invalid input. Opening and closing parenthesis count does not match.");
         return true;
     }
+    // Wait for reply from Simon on how to treat empty expressions
+    // if (i == 0 ){
+    //     printf("Program did not receive any input. ");
+    //     return true;
+    // }
+
     return false;
+}
+
+void print_stack(struct stack *s) {
+    while (!((stack_peek(s) == -1))) {
+        char c = (char) stack_pop(s);
+        if (c == '(') {
+            break;
+        }
+        putchar(' ');
+        putchar(c);
+    }
 }
 
 void process_char(struct stack *s, char *input, int index) {
@@ -70,38 +90,18 @@ void process_char(struct stack *s, char *input, int index) {
             putchar(top);
         } 
         stack_push(s, c);      
-    } else if (isspace(c) | (c == '(') | (c == ')')) {
+    } else if (isspace(c)) {
         return;
+    } else if(c == '(') {
+        stack_push(s, c);
+    } else if(c == ')') {
+        print_stack(s);
     } else {
         if ((index != 0) & !isdigit(input[index - 1])) {
             putchar(' ');
         }
         putchar(c);
     }
-}
-
-void print_stack(struct stack *s) {
-    while (stack_peek(s) != -1) {
-        putchar(' ');
-        putchar(stack_pop(s));
-    }
-}
-
-int compute_subnotation(char *input, int *i) {
-    struct stack *substack = stack_init();
-    *i = *i + 1;
-
-    while (input[*i] != ')') {
-        if (input[*i] == '(') {
-            compute_subnotation(input, i);
-        }
-        process_char(substack, input, *i);
-        *i = *i + 1;
-    }
-    print_stack(substack);
-    free(substack);
-
-    return *i;
 }
 
 int main(int argc, char *argv[]) {
@@ -119,11 +119,7 @@ int main(int argc, char *argv[]) {
     struct stack *s = stack_init();
     
     for (int index = 0; input[index] != 0; index++) {
-        if (input[index] == '(') {
-            index = compute_subnotation(input, &index);
-        } else {
-            process_char(s, input, index);            
-        }
+        process_char(s, input, index);            
     }
 
     print_stack(s);
