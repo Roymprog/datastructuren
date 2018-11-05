@@ -33,8 +33,15 @@ _Bool isfunction(char c) {
     return false;
 }
 
+_Bool isbinaryoperator(char c) {
+    if ((c == '*') | (c == '/') | (c == '+') | (c == '-')) {
+        return true;
+    }
+    return false;
+}
+
 _Bool isoperator(char c) {
-    if ((isfunction(c)) | (c == '~') | (c == '^') | (c == '*') | (c == '/') | (c == '+') | (c == '-')) {
+    if ((isfunction(c)) | (c == '~') | (c == '^') | isbinaryoperator(c)) {
         return true;
     }
     return false;
@@ -49,11 +56,37 @@ _Bool is_invalid_character(char c) {
 }
 
 char find_prev_nonspace_char(char *input, int i) {
-    while (isspace(input[i - 1])) {
+    if (i == -1) {
+        return input[i];
+
+    }
+
+    while (isspace(input[i])) {
         i--;
     }
 
-    return input[i - 1];
+    return input[i];
+}
+
+char find_next_nonspace_char(char *input, int i) {
+    if (input[i] == 0) {
+        return input[i - 1];
+    }
+
+    while (isspace(input[i])) {
+        i++;
+    }
+
+    return input[i];
+}
+
+_Bool invalid_operator_use(char *input, int i) {
+    char prev_nonspace = find_prev_nonspace_char(input, i - 1);
+    char next_nonspace = find_next_nonspace_char(input, i + 1);
+    if (!(isdigit(prev_nonspace) | prev_nonspace == ')') | !(isdigit(next_nonspace) | next_nonspace == '(')) {
+        return true;
+    }
+    return false;
 }
 
 _Bool is_invalid_input(char *input) {
@@ -69,11 +102,16 @@ _Bool is_invalid_input(char *input) {
         if (c == '(') {
             par_open++;
         } else if (c == ')') {
-            if ((i != 0) & (find_prev_nonspace_char(input, i) == '(')) {
+            if (find_prev_nonspace_char(input, i) == '(') {
                 printf("Program was called with empty parenthesis expression.");
                 return true;
             }
             par_close++;
+        } else if (isbinaryoperator(c)) {          
+            if (invalid_operator_use(input, i)) {
+                printf("Input contains binary operator %c without corresponding operands.", c);
+                return true;
+            }
         }
     }
     if (par_open != par_close) {
