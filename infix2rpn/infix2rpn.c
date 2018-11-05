@@ -41,6 +41,14 @@ _Bool is_invalid_character(char c) {
     }
 }
 
+char find_prev_nonspace_char(char *input, int i) {
+    while (isspace(input[i - 1])) {
+        i--;
+    }
+
+    return input[i - 1];
+}
+
 _Bool is_invalid_input(char *input) {
     int par_open = 0;
     int par_close = 0;
@@ -54,6 +62,10 @@ _Bool is_invalid_input(char *input) {
         if (c == '(') {
             par_open++;
         } else if (c == ')') {
+            if ((i != 0) & (find_prev_nonspace_char(input, i) == '(')) {
+                printf("Program was called with empty parenthesis expression.");
+                return true;
+            }
             par_close++;
         }
     }
