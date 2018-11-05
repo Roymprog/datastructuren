@@ -83,7 +83,7 @@ char find_next_nonspace_char(char *input, int i) {
 _Bool invalid_operator_use(char *input, int i) {
     char prev_nonspace = find_prev_nonspace_char(input, i - 1);
     char next_nonspace = find_next_nonspace_char(input, i + 1);
-    if (!(isdigit(prev_nonspace) | prev_nonspace == ')') | !(isdigit(next_nonspace) | next_nonspace == '(')) {
+    if (!(isdigit(prev_nonspace) | (prev_nonspace == ')')) | !(isdigit(next_nonspace) | (next_nonspace == '('))) {
         return true;
     }
     return false;
