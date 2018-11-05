@@ -97,7 +97,7 @@ void process_char(struct stack *s, char *input, int index) {
     } else if(c == ')') {
         print_stack(s);
     } else {
-        if ((index != 0) & !isdigit(input[index - 1])) {
+        if ((index != 0) & !isdigit(input[index - 1]) & !(input[index - 1] == '.')) {
             putchar(' ');
         }
         putchar(c);
