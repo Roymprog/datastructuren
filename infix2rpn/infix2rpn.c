@@ -7,38 +7,42 @@
 
 #include "stack.h"
 
-_Bool isfunction(char c) {
+// Assumes every capital letter between F and Z in expression is a function 
+_Bool is_function(char c) {
     if ((c >= 'F') & (c <= 'Z')) {
         return true;
     }
+
     return false;
 }
 
-_Bool isbinaryoperator(char c) {
+_Bool is_binary_operator(char c) {
     if ((c == '*') | (c == '/') | (c == '+') | (c == '-')) {
         return true;
     }
+
     return false;
 }
 
-_Bool isoperator(char c) {
-    if ((isfunction(c)) | (c == '~') | (c == '^') | isbinaryoperator(c)) {
+_Bool is_operator(char c) {
+    if ((is_function(c)) | (c == '~') | (c == '^') | is_binary_operator(c)) {
         return true;
     }
+
     return false;
 }    
 
 _Bool is_invalid_character(char c) {
-    if (isoperator(c) | isdigit(c) | isspace(c) | (c == '.') | (c == '(') | (c == ')')) {
+    if (is_operator(c) | isdigit(c) | isspace(c) | (c == '.') | (c == '(') | (c == ')')) {
         return false;
-    } else {
-        return true;
     }
+
+    return true;
 }
 
 // Determines operator precedence, higher return value means higher precedence
 int precedence(char c){
-    if (isfunction(c)) {
+    if (is_function(c)) {
         return 6;
     } else if (c == '~') {
         return 5;
@@ -58,7 +62,7 @@ int precedence(char c){
 // Loops from i to beginning of input to find non-space char
 // returns "end of string" i.e. 0 if no non-space found 
 char find_prev_nonspace_char(char *input, int i) {
-    while (isspace(input[i]) | isbinaryoperator(input[i]) | (input[i] == ')')) {
+    while (isspace(input[i]) | is_binary_operator(input[i]) | (input[i] == ')')) {
         if (i == 0) {
             return 0;
         }
@@ -70,7 +74,7 @@ char find_prev_nonspace_char(char *input, int i) {
 
 // Loops to end of string to find non-space character
 char find_next_nonspace_char(char *input, int i) {
-    while (isspace(input[i]) | isbinaryoperator(input[i])) {
+    while (isspace(input[i]) | is_binary_operator(input[i])) {
         i++;
     }
 
@@ -79,12 +83,13 @@ char find_next_nonspace_char(char *input, int i) {
 
 // Returns whether or not a digit or corresponding parenthesis
 // is present in front and after binary operators
-_Bool invalid_bin_op_use(char *input, int i) {
+_Bool invalid_binary_operator_use(char *input, int i) {
     char prev_nonspace = find_prev_nonspace_char(input, i);
     char next_nonspace = find_next_nonspace_char(input, i);
     if (!(isdigit(prev_nonspace) | (prev_nonspace == ')')) | !(isdigit(next_nonspace) | (next_nonspace == '('))) {
         return true;
     }
+
     return false;
 }
 
@@ -106,19 +111,20 @@ _Bool is_invalid_input(char *input) {
                 return true;
             }
             par_close++;
-        } else if (isbinaryoperator(c)) {          
-            if (invalid_bin_op_use(input, i)) {
+        } else if (is_binary_operator(c)) {          
+            if (invalid_binary_operator_use(input, i)) {
                 printf("Input contains binary operator %c without corresponding operands.", c);
                 return true;
             }
         }
     }
     if (par_open != par_close) {
-        printf("Program was called with invalid input. Opening and closing parenthesis count does not match.");
+        printf("Program was called with invalid input. Opening and closing parentheses do not match.");
         return true;
     }
 
     // Exit on empty input as per Simon's reply in discussion
+    // no non-space is found when end-of-word char "0" is matched
     char next_nonspace = find_next_nonspace_char(input, 0);
     if ((i == 0) | (next_nonspace == 0)) {
         printf("Program did not receive any input. ");
@@ -141,12 +147,15 @@ void print_stack(struct stack *s) {
 
 void process_char(struct stack *s, char *input, int index) {
     char c = input[index];
-    if (isoperator(c)) {
-        if ((stack_empty(s) == 0) & (precedence((char) stack_peek(s)) >= precedence(c))) {
+    if (is_operator(c)) {
+        char top_char = (char) stack_peek(s);
+
+        if ((stack_empty(s) == 0) & (precedence(top_char) >= precedence(c))) {
             char top = (char) stack_pop(s);
             putchar(' ');
             putchar(top);
         } 
+
         stack_push(s, c);      
     } else if (isspace(c)) {
         return;
@@ -155,9 +164,15 @@ void process_char(struct stack *s, char *input, int index) {
     } else if(c == ')') {
         print_stack(s);
     } else {
-        if ((index != 0) & !isdigit(input[index - 1]) & !(input[index - 1] == '.')) {
-            putchar(' ');
+        
+        if (index != 0) {
+            char former = input[index - 1];
+            
+            if (!isdigit(former) & !(former == '.')) {
+                putchar(' ');
+            }
         }
+
         putchar(c);
     }
 }
@@ -181,8 +196,6 @@ int main(int argc, char *argv[]) {
     }
 
     print_stack(s);
-
-    // ... SOME CODE MISSING HERE ...
 
     stack_cleanup(s);
 
