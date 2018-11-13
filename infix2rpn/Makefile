@@ -42,7 +42,7 @@ valgrind: $(PROG)
 stack.o: stack.c stack.h
 
 infix2rpn: infix2rpn.o stack.o
-	$(CC) -o $@ $^ -no-pie $(LDFLAGS) 
+	$(CC) -o $@ $^ $(LDFLAGS) 
 
 clean:
 	rm -f *~ *.o $(PROG) $(TESTS)
