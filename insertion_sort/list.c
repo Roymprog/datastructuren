@@ -126,7 +126,7 @@ node* list_next(node* n) {
 }
 
 node* list_prev(list* l, node* n) {
-    if (n == NULL) {
+    if (n == NULL || l == NULL) {
         return n;
     }
 
@@ -134,13 +134,16 @@ node* list_prev(list* l, node* n) {
 }
 
 int list_unlink_node(list* l, node* n) {
-    if (n == NULL) {
+    if (n == NULL || l == NULL) {
         return 1;
+    }
+    if (n->prev == NULL) {
+        l->head = n->next;
+        return 0;
     }
 
     node* previous = n->prev;
     previous->next = n->next;
-    list_free_node(n);
 
     return 0;
 }
@@ -151,6 +154,8 @@ void list_free_node(node* n) {
     }
     
     free(n);
+
+    n = NULL;
 }
 
 int list_insert_after(list* l, node* n, node* m) {
@@ -161,6 +166,9 @@ int list_insert_after(list* l, node* n, node* m) {
     node* current = l->head;
     do {
         if (current == m) {
+            if (m->next == NULL) {
+                l->tail = n;
+            }
             n->next = m->next;
             n->prev = m;
             m->next = n;
@@ -181,6 +189,9 @@ int list_insert_before(list* l, node* n, node* m) {
     node* current = l->head;
     do {
         if (current == m) {
+            if (m->prev == NULL) {
+                l->head = n;
+            }
             n->next = m;
             n->prev = m->prev;
             m->prev = n;
