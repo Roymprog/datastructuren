@@ -27,7 +27,7 @@ int list_add(struct list *l, int num);
  * Return 0 if succesful, 1 otherwise. */
 int list_add_back(struct list *l, int num);
 
-/* Return the first node of the list or NULL is list is empty. */
+/* Return the first node of the list or NULL if list is empty. */
 struct node* list_head(struct list *l);
 
 /* Return list length. */

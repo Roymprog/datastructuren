@@ -26,7 +26,7 @@ list* list_init() {
 }
 
 int list_cleanup(list *l) {
-    node* n = l->tail;
+    node* n = l->head;
 
     if (n == NULL) {
         free(l);
@@ -69,8 +69,8 @@ int list_add(list *l, int num) {
         l->head = new_node;
         return 0;
     } else {
-        l->head->next = new_node;
-        new_node->prev = l->head;
+        new_node->next = l->head;
+        l->head->prev = new_node;
         l->head = new_node;
         return 0;
     }
@@ -88,21 +88,21 @@ int list_add_back(list *l, int num) {
         l->head = new_node;
         return 0;
     } else {
-        l->tail->prev = new_node;
-        new_node->next = l->tail;
+        new_node->prev = l->tail;
+        l->tail->next = new_node;
         l->tail = new_node;
         return 0;
     }
 }
 
 node* list_head(list *l) {
-    // ... SOME CODE MISSING HERE ...
+    return l->head;
 }
 
 int list_length(list *l) {
     int counter = 0;
 
-    for(node *n = l->tail; n != NULL; n = n->next) {
+    for(node *n = l->head; n != NULL; n = n->next) {
         counter++;
     }
 
@@ -110,29 +110,85 @@ int list_length(list *l) {
 }
 
 int list_node_data(node* n) {
-    // ... SOME CODE MISSING HERE ...
+    if (n == NULL) {
+        return -1;
+    }
+
+    return n->number;
 }
 
 node* list_next(node* n) {
-    // ... SOME CODE MISSING HERE ...
+    if (n == NULL) {
+        return n;
+    }
+
+    return n->next;
 }
 
 node* list_prev(list* l, node* n) {
-    // ... SOME CODE MISSING HERE ...
+    if (n == NULL) {
+        return n;
+    }
+
+    return n->prev;
 }
 
 int list_unlink_node(list* l, node* n) {
-    // ... SOME CODE MISSING HERE ...
+    if (n == NULL) {
+        return 1;
+    }
+
+    node* previous = n->prev;
+    previous->next = n->next;
+    list_free_node(n);
+
+    return 0;
 }
 
 void list_free_node(node* n) {
-    // ... SOME CODE MISSING HERE ...
+    if (n == NULL) {
+        return;
+    }
+    
+    free(n);
 }
 
 int list_insert_after(list* l, node* n, node* m) {
-    // ... SOME CODE MISSING HERE ...
+    if (l->head == NULL || n == NULL || m == NULL) {
+        return 1;
+    }
+
+    node* current = l->head;
+    do {
+        if (current == m) {
+            n->next = m->next;
+            n->prev = m;
+            m->next = n;
+            return 0;
+        }
+
+        current = current->next;
+    } while(current != NULL);
+
+    return 1;
 }
 
 int list_insert_before(list* l, node* n, node* m) {
-    // ... SOME CODE MISSING HERE ...
+    if (l->head == NULL || n == NULL || m == NULL) {
+        return 1;
+    }
+
+    node* current = l->head;
+    do {
+        if (current == m) {
+            n->next = m;
+            n->prev = m->prev;
+            m->prev = n;
+            return 0;
+        }
+
+        current = current->next;
+    } while(current != NULL);
+
+    return 1;
 }
