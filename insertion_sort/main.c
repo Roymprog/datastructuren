@@ -6,6 +6,9 @@
 
 #include "list.h"
 
+typedef struct list list;
+typedef struct node node;
+
 struct config {
     // You can ignore these options until/unless you implement the
     // bonus features.
@@ -44,15 +47,57 @@ int main(int argc, char *argv[]) {
     if (parse_options(&cfg, argc, argv) != 0)
         return 1;
 
-    // ... SOME CODE MISSING HERE ...
+    list* sorted_list = list_init();
 
-    while (fgets(buf, BUF_SIZE, stdin)) {
-
-        // ... SOME CODE MISSING HERE ...
+    if (sorted_list == NULL) {
+        return 1;
     }
 
-    // ... SOME CODE MISSING HERE ...
+    char* c = NULL;
 
+    while (c = fgets(buf, BUF_SIZE, stdin)) {
+        char* endptr = NULL;
+        int num = (int) strtol(buf, &endptr, 10);
+
+        // Skip empty string input
+        if (endptr == c) {
+            continue;
+        }
+
+        // Treat characters in same line as well
+        if (*endptr != '\0') {
+
+        }
+
+        node* current = list_head(sorted_list);
+ 
+        for(; current != NULL; current = list_next(current)) {
+            if (num <= list_node_data(current)) {
+                node* new_node = list_new_node(num);
+                if (new_node == NULL) {
+                    list_cleanup(sorted_list);
+                    return 1;
+                }
+                int status = list_insert_before(sorted_list, new_node, current);
+                if (status == 1) {
+                    list_cleanup(sorted_list);
+                    return status;
+                }
+                break;
+            }
+        }
+
+        if (current == NULL) {
+            int status = list_add_back(sorted_list, num);
+            if (status == 1){
+                list_cleanup(sorted_list);
+                return status;
+            }
+        }
+    }
+
+    // Clean up before quit program
+    list_cleanup(sorted_list);
     return 0;
 }
 

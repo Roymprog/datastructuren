@@ -27,13 +27,16 @@ list* list_init() {
 
 int list_cleanup(list *l) {
     node* n = l->head;
-
+    l->head = NULL;
+    l->tail = NULL;
+    
     if (n == NULL) {
         free(l);
         return 0;
     }
 
     do {
+        printf("Cleaning up node with number %d", n->number);
         node* temp = n;
         n = n->next;
         free(temp);
@@ -60,7 +63,6 @@ node* list_new_node(int num) {
 int list_add(list *l, int num) {
     node* new_node = list_new_node(num);
     if (new_node == NULL) {
-        list_cleanup(l);
         return 1;
     }
 
@@ -79,7 +81,6 @@ int list_add(list *l, int num) {
 int list_add_back(list *l, int num) {
     node* new_node = list_new_node(num);
     if (new_node == NULL) {
-        list_cleanup(l);
         return 1;
     }
     
@@ -154,8 +155,6 @@ void list_free_node(node* n) {
     }
     
     free(n);
-
-    n = NULL;
 }
 
 int list_insert_after(list* l, node* n, node* m) {
