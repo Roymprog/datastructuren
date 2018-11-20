@@ -1,0 +1,6 @@
+# Dummy file as input
+tst.txt
+
+# Exclude executables
+decode
+encode
