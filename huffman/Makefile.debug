@@ -4,7 +4,6 @@ define CFLAGS
 -D_POSIX_C_SOURCE=200809L \
 -std=c11 \
 -g3 \
--fsanitize=address \
 -Wpedantic \
 -Wall \
 -Wextra \
@@ -23,7 +22,6 @@ define CFLAGS
 -Wstrict-prototypes
 endef
 
-LDFLAGS = -fsanitize=address
 
 SOURCES = \
 	read_data.c load_tree.c compute_frequencies.c compute_tree.c \
