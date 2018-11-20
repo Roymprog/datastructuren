@@ -23,7 +23,7 @@ int main(void) {
     if (tree == 0) {
         tree = fixed_tree();
     }
-    // print_tree(tree);
+    print_tree(tree);
 
     // ... SOME CODE MISSING HERE ...
 
