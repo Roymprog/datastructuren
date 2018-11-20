@@ -1,0 +1,1422 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/Contents 22 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 21 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+6 0 obj
+<<
+/Border [ 0 0 0 ] /Contents () /Dest [ 11 0 R /XYZ 68.69291 237.9843 0 ] /Rect [ 188.6989 357.6236 193.1469 369.6236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+7 0 obj
+<<
+/Annots [ 6 0 R ] /Contents 23 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 21 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+8 0 obj
+<<
+/Border [ 0 0 0 ] /Contents () /Dest [ 11 0 R /XYZ 68.69291 225.9843 0 ] /Rect [ 355.4329 603.0236 359.8809 615.0236 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/Border [ 0 0 0 ] /Contents () /Dest [ 7 0 R /XYZ 188.4829 371.6236 0 ] /Rect [ 68.69291 223.9843 74.25291 235.9843 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/Border [ 0 0 0 ] /Contents () /Dest [ 11 0 R /XYZ 355.4329 617.0236 0 ] /Rect [ 68.69291 211.9843 74.25291 223.9843 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/Annots [ 8 0 R 9 0 R 10 0 R ] /Contents 24 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 21 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+12 0 obj
+<<
+/Outlines 14 0 R /PageLabels 25 0 R /PageMode /UseNone /Pages 21 0 R /Type /Catalog
+>>
+endobj
+13 0 obj
+<<
+/Author () /CreationDate (D:20181119152759+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20181119152759+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (Assignment 3: Binary trees and Huffman coding) /Trapped /False
+>>
+endobj
+14 0 obj
+<<
+/Count 6 /First 15 0 R /Last 20 0 R /Type /Outlines
+>>
+endobj
+15 0 obj
+<<
+/Dest [ 5 0 R /XYZ 62.69291 689.0236 0 ] /Next 16 0 R /Parent 14 0 R /Title (Objectives)
+>>
+endobj
+16 0 obj
+<<
+/Dest [ 5 0 R /XYZ 62.69291 638.0236 0 ] /Next 17 0 R /Parent 14 0 R /Prev 15 0 R /Title (Requirements)
+>>
+endobj
+17 0 obj
+<<
+/Dest [ 5 0 R /XYZ 62.69291 557.0236 0 ] /Next 18 0 R /Parent 14 0 R /Prev 16 0 R /Title (Behavior of the encoder and decoder programs)
+>>
+endobj
+18 0 obj
+<<
+/Dest [ 5 0 R /XYZ 62.69291 212.0236 0 ] /Next 19 0 R /Parent 14 0 R /Prev 17 0 R /Title (Order of work \(strongly suggested\))
+>>
+endobj
+19 0 obj
+<<
+/Dest [ 11 0 R /XYZ 62.69291 765.0236 0 ] /Next 20 0 R /Parent 14 0 R /Prev 18 0 R /Title (Grading)
+>>
+endobj
+20 0 obj
+<<
+/Dest [ 11 0 R /XYZ 62.69291 456.0236 0 ] /Parent 14 0 R /Prev 19 0 R /Title (Overview of Huffman coding)
+>>
+endobj
+21 0 obj
+<<
+/Count 3 /Kids [ 5 0 R 7 0 R 11 0 R ] /Type /Pages
+>>
+endobj
+22 0 obj
+<<
+/Length 8716
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 6.014882 0 Td (Assignment 3: Binary trees and Huffman coding) Tj T* -6.014882 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 716.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 48.03937 0 Td (Date:) Tj T* -48.03937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (November 19th 2018) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 701.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 28.02937 0 Td (Deadline:) Tj T* -28.02937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (November 26th 23:59) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 668.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Objectives) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 650.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (You must implement a data \(de\)compressor and exercise your understanding of binary trees.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 617.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Requirements) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 587.0236 cm
+q
+BT 1 0 0 1 0 14 Tm 2.257126 Tw 12 TL /F1 10 Tf 0 0 0 rg (Your deliverable must contain two programs ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg (, behaving as detailed in the next) Tj T* 0 Tw (section.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 569.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (You must submit your work as a tarball. ) Tj /F3 10 Tf 0 0 0 rg (make) Tj ( ) Tj (tarball) Tj /F1 10 Tf 0 0 0 rg ( will create the correct tarball for you.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 536.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Behavior of the encoder and decoder programs) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 518.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program must:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 512.0236 cm
+Q
+q
+1 0 0 1 62.69291 512.0236 cm
+Q
+q
+1 0 0 1 62.69291 488.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .409984 Tw 12 TL /F1 10 Tf 0 0 0 rg (accept an optional command-line argument that specifies which tree it should use -- if this argument) Tj T* 0 Tw (is not specified, the ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program should decide a Huffman tree itself;) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 482.0236 cm
+Q
+q
+1 0 0 1 62.69291 470.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (read data to encode from its standard input; and) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 464.0236 cm
+Q
+q
+1 0 0 1 62.69291 332.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 117 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 117 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (produce on its standard output:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 111 cm
+Q
+q
+1 0 0 1 23 111 cm
+Q
+q
+1 0 0 1 23 87 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .681235 Tw 12 TL /F1 10 Tf 0 0 0 rg (on the first line, a representation of the Huffman tree it used, using the format documented for) Tj T* 0 Tw (the ) Tj /F3 10 Tf 0 0 0 rg (print_tree) Tj /F1 10 Tf 0 0 0 rg ( function;) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 81 cm
+Q
+q
+1 0 0 1 23 57 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm -0.111779 Tw 12 TL /F1 10 Tf 0 0 0 rg (starting from the 2nd line, the encoding of the input data in ASCII-coded binary, that is using one) Tj T* 0 Tw (full character ") Tj /F3 10 Tf 0 0 0 rg (0) Tj /F1 10 Tf 0 0 0 rg (" for binary 0 and one full character ") Tj /F3 10 Tf 0 0 0 rg (1) Tj /F1 10 Tf 0 0 0 rg (" for binary 1;) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 51 cm
+Q
+q
+1 0 0 1 23 39 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (at the end of the encoded data, the final marker character ") Tj /F3 10 Tf 0 0 0 rg (~) Tj /F1 10 Tf 0 0 0 rg (" followed by a newline character;) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 33 cm
+Q
+q
+1 0 0 1 23 -3 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 2.034985 Tw (on the last line of output: the number of characters from the input that were encoded, the) Tj T* 0 Tw 1.027485 Tw (number of nodes in the Huffman tree, the number of binary digits in the encoded output, and) Tj T* 0 Tw (the compression ratio as percentage \(rounded down\) all separated by spaces.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 332.0236 cm
+Q
+q
+1 0 0 1 62.69291 326.0236 cm
+Q
+q
+1 0 0 1 62.69291 314.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL ( ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 314.0236 cm
+Q
+q
+1 0 0 1 62.69291 296.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( program must read data from its standard input:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 290.0236 cm
+Q
+q
+1 0 0 1 62.69291 290.0236 cm
+Q
+q
+1 0 0 1 62.69291 278.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (on the first line, a representation of a Huffman tree using the same format as ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg (;) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 272.0236 cm
+Q
+q
+1 0 0 1 62.69291 260.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (starting from the 2nd line, the encoded input data in ASCII-coded binary, terminated by ") Tj /F3 10 Tf 0 0 0 rg (~) Tj /F1 10 Tf 0 0 0 rg (";) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 254.0236 cm
+Q
+q
+1 0 0 1 62.69291 242.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (the remainder of the input, if any, is silently discarded.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 242.0236 cm
+Q
+q
+1 0 0 1 62.69291 224.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Then prints on its standard output the result of decoding the provided input using the provided tree.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 191.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Order of work \(strongly suggested\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 179.0236 cm
+Q
+q
+1 0 0 1 62.69291 179.0236 cm
+Q
+q
+1 0 0 1 62.69291 89.02362 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (1.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 63 cm
+q
+BT 1 0 0 1 0 14 Tm 2.503615 Tw 12 TL /F1 10 Tf 0 0 0 rg (Implement the missing ) Tj /F3 10 Tf 0 0 0 rg (print_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( function which represents its tree argument using RPN) Tj T* 0 Tw (notation:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 57 cm
+Q
+q
+1 0 0 1 23 57 cm
+Q
+q
+1 0 0 1 23 45 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (a single node tree with node value ) Tj /F3 10 Tf 0 0 0 rg (X) Tj /F1 10 Tf 0 0 0 rg ( is printed as ) Tj /F3 10 Tf 0 0 0 rg (X) Tj /F1 10 Tf 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 39 cm
+Q
+q
+1 0 0 1 23 15 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .698876 Tw (the binary tree with two children X and Y is printed by printing X, then printing Y, then printing) Tj T* 0 Tw ("~".) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 15 cm
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (For example this tree:) Tj T* ET
+Q
+Q
+q
+Q
+Q
+ 
+endstream
+endobj
+23 0 obj
+<<
+/Length 9544
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 522.6236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 229.4 Tm  T* ET
+q
+1 0 0 1 23 178.2 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 442.6898 60 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 38 Tm /F3 10 Tf 12 TL (\(root\)) Tj T* ( /  \\) Tj T* (a   / \\) Tj T* (   b   c) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 23 152.2 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Will be printed as: ) Tj /F3 10 Tf 0 0 0 rg (abc~~) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 134.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (And this tree:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 65 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.960784 .960784 .862745 rg
+n -6 -6 445.6898 60 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 38 Tm /F3 10 Tf 12 TL (  \(root\)) Tj T* (  /    \\) Tj T* ( / \\    c) Tj T* (a   b) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 23 39 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Will be printed as: ) Tj /F3 10 Tf 0 0 0 rg (ab~c~) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 26 Tm 2.989982 Tw 12 TL /F1 10 Tf 0 0 0 rg (You can test your ) Tj /F3 10 Tf 0 0 0 rg (print_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( at this point by uncommenting the ) Tj /F3 10 Tf 0 0 0 rg (print_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( call in) Tj T* 0 Tw .441318 Tw /F3 10 Tf 0 0 0 rg (decode.c) Tj /F1 10 Tf 0 0 0 rg ( and running ) Tj /F3 10 Tf 0 0 0 rg (./decode) Tj /F1 10 Tf 0 0 0 rg ( with any kind of input. ) Tj /F3 10 Tf 0 0 0 rg (./decode) Tj /F1 10 Tf 0 0 0 rg ( should now print the fixed tree) Tj T* 0 Tw (generated by ) Tj /F3 10 Tf 0 0 0 rg (fixed_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( which is ) Tj /F3 10 Tf 0 0 0 rg (ab~c~) Tj /F1 10 Tf 0 0 0 rg (. Verify that your output matches this tree.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 516.6236 cm
+Q
+q
+1 0 0 1 62.69291 324.6236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 177 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (2.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 165 cm
+q
+BT 1 0 0 1 0 14 Tm .499318 Tw 12 TL /F1 10 Tf 0 0 0 rg (Using the example Huffman tree provided by ) Tj /F3 10 Tf 0 0 0 rg (fixed_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( in the code as constant tree input \(so) Tj T* 0 Tw (ignoring the command-line argument\), complete:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 159 cm
+Q
+q
+1 0 0 1 23 159 cm
+Q
+q
+1 0 0 1 23 147 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (the definition of the ) Tj /F3 10 Tf 0 0 0 rg (code) Tj /F1 10 Tf 0 0 0 rg ( struct \(you need to decide this yourself\);) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 141 cm
+Q
+q
+1 0 0 1 23 105 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 26 Tm 1.32998 Tw 12 TL /F1 10 Tf 0 0 0 rg (the function ) Tj /F3 10 Tf 0 0 0 rg (compute_code_table\(\)) Tj /F1 10 Tf 0 0 0 rg ( which translates a tree to a code table. This function) Tj T* 0 Tw 1.665366 Tw (returns a pointer to an array ) Tj /F3 10 Tf 0 0 0 rg (encoding_table_t) Tj /F1 10 Tf 0 0 0 rg (. The table maps ascii characters to their) Tj T* 0 Tw (binary Huffman encoding.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 99 cm
+Q
+q
+1 0 0 1 23 75 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .09784 Tw 12 TL /F1 10 Tf 0 0 0 rg (the function ) Tj /F3 10 Tf 0 0 0 rg (print_code\(\)) Tj /F1 10 Tf 0 0 0 rg ( which prints the encoded sequence of ) Tj /F3 10 Tf 0 0 0 rg (0) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (1) Tj /F1 10 Tf 0 0 0 rg ( characters for each) Tj T* 0 Tw (input character.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 23 75 cm
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 62 Tm .878735 Tw 12 TL /F1 10 Tf 0 0 0 rg (Now you can modify the ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program to use both your ) Tj /F3 10 Tf 0 0 0 rg (print_tree) Tj /F1 10 Tf 0 0 0 rg ( function from step 1 and) Tj T* 0 Tw -0.08896 Tw (your algorithm in this step to produce a coded tree and a coded input that is accepted by the provided) Tj T* 0 Tw .107985 Tw /F3 10 Tf 0 0 0 rg (decode.ref) Tj /F1 10 Tf 0 0 0 rg ( program ) Tj /F1 8 Tf 0 0 .501961 rg 5 Ts (1) Tj /F1 10 Tf 0 0 0 rg 0 Ts (. You can then use ) Tj /F3 10 Tf 0 0 0 rg (decode.ref) Tj /F1 10 Tf 0 0 0 rg ( to check whether your work up to this point) Tj T* 0 Tw .701412 Tw (is correct. The command ) Tj /F3 10 Tf 0 0 0 rg (echo) Tj ( ) Tj ("abca") Tj ( ) Tj (|) Tj ( ) Tj (./encode) Tj ( ) Tj ( ) Tj (|) Tj ( ) Tj (./decode.ref) Tj /F1 10 Tf 0 0 0 rg ( should print ) Tj /F3 10 Tf 0 0 0 rg (abca) Tj /F1 10 Tf 0 0 0 rg (. At) Tj T* 0 Tw .777882 Tw (this point you can only use the characters ) Tj /F3 10 Tf 0 0 0 rg (a) Tj /F1 10 Tf 0 0 0 rg (, ) Tj /F3 10 Tf 0 0 0 rg (b) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (c) Tj /F1 10 Tf 0 0 0 rg ( because those are the only characters in the) Tj T* 0 Tw (tree created by ) Tj /F3 10 Tf 0 0 0 rg (fixed_tree\(\)) Tj /F1 10 Tf 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 318.6236 cm
+Q
+q
+1 0 0 1 62.69291 252.6236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 51 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (3.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 39 cm
+q
+BT 1 0 0 1 0 14 Tm 2.044983 Tw 12 TL /F1 10 Tf 0 0 0 rg (Again using the example Huffman tree from ) Tj /F3 10 Tf 0 0 0 rg (fixed_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( \(so ignoring the first line of input\),) Tj T* 0 Tw (complete the ) Tj /F3 10 Tf 0 0 0 rg (main\(\)) Tj /F1 10 Tf 0 0 0 rg ( function of ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( to decompress input data using that tree.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 26 Tm .64311 Tw 12 TL /F1 10 Tf 0 0 0 rg (You can then use your ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program from step 2 to check your newly minted ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( program.) Tj T* 0 Tw -0.08592 Tw (You can only use the characters ) Tj /F3 10 Tf 0 0 0 rg (a) Tj /F1 10 Tf 0 0 0 rg (, ) Tj /F3 10 Tf 0 0 0 rg (b) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (c) Tj /F1 10 Tf 0 0 0 rg ( at this point because we are still using the fixed tree. As a) Tj T* 0 Tw (test: ) Tj /F3 10 Tf 0 0 0 rg (echo) Tj ( ) Tj ("aabc") Tj ( ) Tj (|) Tj ( ) Tj (./encode) Tj /F1 10 Tf 0 0 0 rg ( should print ) Tj /F3 10 Tf 0 0 0 rg (aabc) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 246.6236 cm
+Q
+q
+1 0 0 1 62.69291 132.6236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 99 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (4.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 63 cm
+q
+BT 1 0 0 1 0 38 Tm 1.258314 Tw 12 TL /F1 10 Tf 0 0 0 rg (Complete your ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( program by implementing the missing ) Tj /F3 10 Tf 0 0 0 rg (load_tree) Tj /F1 10 Tf 0 0 0 rg ( function which reads a) Tj T* 0 Tw .201412 Tw (tree definition created by ) Tj /F3 10 Tf 0 0 0 rg (print_tree) Tj /F1 10 Tf 0 0 0 rg ( and re-creates the corresponding tree. Hint: you may want to) Tj T* 0 Tw 2.00284 Tw (use the generic stack implemented in ) Tj /F3 10 Tf 0 0 0 rg (stack.c) Tj /F1 10 Tf 0 0 0 rg (. The tree is represented in postfix notation and) Tj T* 0 Tw (stacks are a convenient way to deal with that format.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 50 Tm 1.112651 Tw 12 TL /F1 10 Tf 0 0 0 rg (Then you can use the provided ) Tj /F3 10 Tf 0 0 0 rg (encode.ref) Tj /F1 10 Tf 0 0 0 rg ( to check that your decode program can now handle) Tj T* 0 Tw 1.719269 Tw (inputs with different trees. Check if the trees printed by ) Tj /F3 10 Tf 0 0 0 rg (encode.ref) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( match. Since) Tj T* 0 Tw .31561 Tw /F3 10 Tf 0 0 0 rg (encode.ref) Tj /F1 10 Tf 0 0 0 rg ( calculates the Huffman tree based its input you can now use all the ascii characters in) Tj T* 0 Tw 1.71498 Tw (the input string. The command ) Tj /F3 10 Tf 0 0 0 rg (echo) Tj ( ) Tj ("xxyzzz") Tj ( ) Tj (|) Tj ( ) Tj (./encode.ref) Tj ( ) Tj (|) Tj ( ) Tj (./decode) Tj /F1 10 Tf 0 0 0 rg ( should print) Tj T* 0 Tw /F3 10 Tf 0 0 0 rg (xxyzzz) Tj /F1 10 Tf 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 126.6236 cm
+Q
+q
+1 0 0 1 62.69291 102.6236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (5.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .564147 Tw 12 TL /F1 10 Tf 0 0 0 rg (Complete your ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program by writing the ) Tj /F3 10 Tf 0 0 0 rg (compute_tree\(\)) Tj /F1 10 Tf 0 0 0 rg ( algorithm that creates an optimal) Tj T* 0 Tw (Huffman tree from the input text instead of using the one created by ) Tj /F3 10 Tf 0 0 0 rg (fixed_tree\(\)) Tj /F1 10 Tf 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 78.62362 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 11 Tm  T* ET
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm 12.61898 Tw 12 TL /F1 10 Tf 0 0 0 rg (Now you can stop using the reference encoder. The following command:) Tj T* 0 Tw /F3 10 Tf 0 0 0 rg (echo) Tj ( ) Tj ("hello) Tj ( ) Tj (huffman") Tj ( ) Tj (|) Tj ( ) Tj (./encode) Tj ( ) Tj (|) Tj ( ) Tj (./decode) Tj /F1 10 Tf 0 0 0 rg ( should print: ) Tj /F3 10 Tf 0 0 0 rg (hello) Tj ( ) Tj (huffman) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 78.62362 cm
+Q
+ 
+endstream
+endobj
+24 0 obj
+<<
+/Length 8437
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 744.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Grading) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 726.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Your grade starts from 0, and the following tests determine your grade:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 720.0236 cm
+Q
+q
+1 0 0 1 62.69291 720.0236 cm
+Q
+q
+1 0 0 1 62.69291 708.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+0,5pt if you have submitted an archive in the right format with an ) Tj /F3 10 Tf 0 0 0 rg (AUTHORS) Tj /F1 10 Tf 0 0 0 rg ( file.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 702.0236 cm
+Q
+q
+1 0 0 1 62.69291 678.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm 2.278555 Tw 12 TL /F1 10 Tf 0 0 0 rg (+0,5pt if your source code builds without errors and you have modified ) Tj /F3 10 Tf 0 0 0 rg (tree.c) Tj /F1 10 Tf 0 0 0 rg (, ) Tj /F3 10 Tf 0 0 0 rg (encode.c) Tj /F1 10 Tf 0 0 0 rg ( or) Tj T* 0 Tw /F3 10 Tf 0 0 0 rg (decode.c) Tj /F1 10 Tf 0 0 0 rg ( in any way.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 672.0236 cm
+Q
+q
+1 0 0 1 62.69291 660.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+1pt if your ) Tj /F3 10 Tf 0 0 0 rg (print_tree) Tj /F1 10 Tf 0 0 0 rg ( function works.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 654.0236 cm
+Q
+q
+1 0 0 1 62.69291 642.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+2pt if your ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program works using only the provided example tree.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 636.0236 cm
+Q
+q
+1 0 0 1 62.69291 624.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+2pt if your ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( program works using only the provided example tree.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 618.0236 cm
+Q
+q
+1 0 0 1 62.69291 606.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (-1pt if ) Tj /F3 10 Tf 0 0 0 rg (valgrind) Tj /F1 10 Tf 0 0 0 rg ( reports errors while running your converter ) Tj /F1 8 Tf 0 0 .501961 rg 5 Ts (2) Tj /F1 10 Tf 0 0 0 rg 0 Ts (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 600.0236 cm
+Q
+q
+1 0 0 1 62.69291 588.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (-1pt if the provided Makefile reports warnings when compiling your code.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 582.0236 cm
+Q
+q
+1 0 0 1 62.69291 570.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (-1pt if you do not check the return of memory allocations.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 570.0236 cm
+Q
+q
+1 0 0 1 62.69291 540.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 2.365868 Tw (The following extra features will be tested to obtain higher grades, but only if you have obtained a) Tj T* 0 Tw (minimum of 5 points on the list above already:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 534.0236 cm
+Q
+q
+1 0 0 1 62.69291 534.0236 cm
+Q
+q
+1 0 0 1 62.69291 522.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+1pt if your ) Tj /F3 10 Tf 0 0 0 rg (load_tree) Tj /F1 10 Tf 0 0 0 rg ( function works properly.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 516.0236 cm
+Q
+q
+1 0 0 1 62.69291 504.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+1pt if your ) Tj /F3 10 Tf 0 0 0 rg (decode) Tj /F1 10 Tf 0 0 0 rg ( program works using arbitrary Huffman trees provided as input.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 498.0236 cm
+Q
+q
+1 0 0 1 62.69291 486.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (+2pt if your ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program constructs minimal Huffman trees for arbitrary inputs.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 480.0236 cm
+Q
+q
+1 0 0 1 62.69291 468.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (-2pt If your implementation has style violations or has a too high complexity.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 468.0236 cm
+Q
+q
+1 0 0 1 62.69291 435.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (Overview of Huffman coding) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 417.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Algorithm to encode the data:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 62.69291 411.0236 cm
+Q
+q
+1 0 0 1 62.69291 411.0236 cm
+Q
+q
+1 0 0 1 62.69291 399.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (1.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Compute frequency table of input) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 393.0236 cm
+Q
+q
+1 0 0 1 62.69291 369.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (2.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .630574 Tw 12 TL /F1 10 Tf 0 0 0 rg (Translate the frequency table to a tree - This is where the ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( program in this assignment also) Tj T* 0 Tw (prints out the coding tree.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 363.0236 cm
+Q
+q
+1 0 0 1 62.69291 351.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (3.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Translate the tree to an encoding table) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 345.0236 cm
+Q
+q
+1 0 0 1 62.69291 321.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 5.66 0 Td (4.) Tj T* -5.66 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm .367045 Tw 12 TL /F1 10 Tf 0 0 0 rg (Use the encoding table to encode the data - This is where the ) Tj /F3 10 Tf 0 0 0 rg (encode) Tj /F1 10 Tf 0 0 0 rg ( programs emits the encoded) Tj T* 0 Tw (output.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 321.0236 cm
+Q
+q
+1 0 0 1 62.69291 264.3307 cm
+Q
+q
+1 0 0 1 62.69291 235.9843 cm
+n 0 14.17323 m 469.8898 14.17323 l S
+Q
+q
+1 0 0 1 62.69291 223.9843 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 0 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 .501961 rg (1) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 0 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf 0 0 0 rg (decode.ref) Tj /F1 10 Tf 0 0 0 rg ( and ) Tj /F3 10 Tf 0 0 0 rg (encode.ref) Tj /F1 10 Tf 0 0 0 rg ( Linux binaries are reference huffman coders.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 199.9843 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 12 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 .501961 rg (2) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .41549 Tw (Remember that valgrind and the address sanitizer don't work together so temporarily) Tj T* 0 Tw (remove the sanitizer flags from the Makefile when testing with valgrind.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+ 
+endstream
+endobj
+25 0 obj
+<<
+/Nums [ 0 26 0 R 1 27 0 R 2 28 0 R ]
+>>
+endobj
+26 0 obj
+<<
+/S /D /St 1
+>>
+endobj
+27 0 obj
+<<
+/S /D /St 2
+>>
+endobj
+28 0 obj
+<<
+/S /D /St 3
+>>
+endobj
+xref
+0 29
+0000000000 65535 f 
+0000000073 00000 n 
+0000000124 00000 n 
+0000000231 00000 n 
+0000000343 00000 n 
+0000000448 00000 n 
+0000000653 00000 n 
+0000000821 00000 n 
+0000001044 00000 n 
+0000001212 00000 n 
+0000001379 00000 n 
+0000001548 00000 n 
+0000001785 00000 n 
+0000001891 00000 n 
+0000002194 00000 n 
+0000002268 00000 n 
+0000002379 00000 n 
+0000002505 00000 n 
+0000002663 00000 n 
+0000002813 00000 n 
+0000002935 00000 n 
+0000003063 00000 n 
+0000003136 00000 n 
+0000011904 00000 n 
+0000021500 00000 n 
+0000029989 00000 n 
+0000030048 00000 n 
+0000030082 00000 n 
+0000030116 00000 n 
+trailer
+<<
+/ID 
+[<7b0efff75594a89b114123745db10b43><7b0efff75594a89b114123745db10b43>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 13 0 R
+/Root 12 0 R
+/Size 29
+>>
+startxref
+30150
+%%EOF
