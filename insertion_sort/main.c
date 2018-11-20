@@ -41,6 +41,36 @@ int parse_options(struct config *cfg, int argc, char *argv[]);
 #define BUF_SIZE 1024
 static char buf[BUF_SIZE];
 
+int process_num(list* l, int num) {
+    node* current = list_head(l);
+ 
+        for(; current != NULL; current = list_next(current)) {
+            if (num <= list_node_data(current)) {
+                node* new_node = list_new_node(num);
+                if (new_node == NULL) {
+                    list_cleanup(l);
+                    return 1;
+                }
+                int status = list_insert_before(l, new_node, current);
+                if (status == 1) {
+                    list_cleanup(l);
+                    return status;
+                }
+                return 0;
+            }
+        }
+
+        if (current == NULL) {
+            int status = list_add_back(l, num);
+            if (status == 1){
+                list_cleanup(l);
+                return status;
+            }
+        }
+        
+        return 0;
+}
+
 int main(int argc, char *argv[]) {
 
     struct config cfg;
@@ -55,7 +85,7 @@ int main(int argc, char *argv[]) {
 
     char* c = NULL;
 
-    while (c = fgets(buf, BUF_SIZE, stdin)) {
+    while ((c = fgets(buf, BUF_SIZE, stdin))) {
         char* endptr = NULL;
         int num = (int) strtol(buf, &endptr, 10);
 
@@ -66,33 +96,26 @@ int main(int argc, char *argv[]) {
 
         // Treat characters in same line as well
         if (*endptr != '\0') {
+            int number = (int) strtol(endptr, &endptr, 10);
+            int status = process_num(sorted_list, number);
 
-        }
-
-        node* current = list_head(sorted_list);
- 
-        for(; current != NULL; current = list_next(current)) {
-            if (num <= list_node_data(current)) {
-                node* new_node = list_new_node(num);
-                if (new_node == NULL) {
-                    list_cleanup(sorted_list);
-                    return 1;
-                }
-                int status = list_insert_before(sorted_list, new_node, current);
-                if (status == 1) {
-                    list_cleanup(sorted_list);
-                    return status;
-                }
-                break;
+            if (status == 1) {
+                return 1;
             }
         }
+        // Treat characters in same line as well
+        if (*endptr != '\0') {
+            int number = (int) strtol(endptr, &endptr, 10);
+            int status = process_num(sorted_list, number);
 
-        if (current == NULL) {
-            int status = list_add_back(sorted_list, num);
-            if (status == 1){
-                list_cleanup(sorted_list);
-                return status;
+            if (status == 1) {
+                return 1;
             }
+        }
+        int status = process_num(sorted_list, num);
+
+        if (status == 1) {
+            return 1;
         }
     }
 
