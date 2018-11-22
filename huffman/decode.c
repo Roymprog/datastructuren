@@ -28,6 +28,9 @@ int main(void) {
 
     // Get second output line with encoded characters
     char* encoded = my_get_line();
+    // Reference pointer to free memory on cleanup
+    char* string = encoded;
+
     printf("%s", encoded);
     putchar('\n');
 
@@ -51,6 +54,7 @@ int main(void) {
 
     // Cleanup.
     free(tree_line);
+    free(string);
     free_tree(tree);
 
     return 0;
