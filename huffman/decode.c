@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "huffman.h"
 
@@ -25,7 +26,28 @@ int main(void) {
     }
     print_tree(tree);
 
-    // ... SOME CODE MISSING HERE ...
+    // Get second output line with encoded characters
+    char* encoded = my_get_line();
+    printf("%s", encoded);
+    putchar('\n');
+
+    tree_t root = tree;
+    while (*encoded != '\0') {
+        if ((tree->left == NULL) && (tree->right == NULL)) {
+            putchar(tree->letter);
+            tree = root;
+            continue;
+        }
+        if (*encoded == '0') {
+            tree = tree->left;
+        } else if (*encoded == '1') {
+            tree = tree->right;
+        } 
+
+        encoded = (encoded + 1);
+
+    }
+    putchar('\n');
 
     // Cleanup.
     free(tree_line);
