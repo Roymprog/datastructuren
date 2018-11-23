@@ -26,13 +26,12 @@ int main(void) {
     }
     print_tree(tree);
 
+    putchar('\n');
+    
     // Get second output line with encoded characters
     char* encoded = my_get_line();
     // Reference pointer to free memory on cleanup
     char* string = encoded;
-
-    printf("%s", encoded);
-    putchar('\n');
 
     tree_t root = tree;
     while (*encoded != '\0') {
@@ -50,7 +49,6 @@ int main(void) {
         encoded = (encoded + 1);
 
     }
-    putchar('\n');
 
     // Cleanup.
     free(tree_line);
