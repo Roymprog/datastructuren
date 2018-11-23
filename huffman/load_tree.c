@@ -1,12 +1,11 @@
 #include "huffman.h"
 #include "stack.h"
-#include <stdio.h>
 
 tree_t recursive_load_tree(struct stack* stack) {
     char* top = stack_pop(stack);
 
     if (top[0] != SPECIAL_CHAR) {
-        return make_tree(top[0], 0, NULL, NULL);
+        return make_tree(top[0], 0, 0, 0);
     }
 
     tree_t right = recursive_load_tree(stack);

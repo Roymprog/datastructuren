@@ -24,6 +24,9 @@ tree_t fixed_tree(void);
 // Special character used to load/print trees.
 #define SPECIAL_CHAR '~'
 
+// Define size of both tables
+#define TABLE_SIZE 256
+
 // Convert the representation of a tree into a tree.
 tree_t load_tree(char* input);
 
@@ -34,7 +37,7 @@ void print_tree(tree_t);
 int count_tree(tree_t);
 
 // The frequency table type.
-typedef tree_t frequency_table_t[256];
+typedef tree_t frequency_table_t[TABLE_SIZE];
 
 // Create a frequency table from the input data.
 frequency_table_t* compute_frequencies(char* input_data);
@@ -54,7 +57,7 @@ typedef struct {
 } code;
 
 // The encoding table maps characters to their encoding.
-typedef code encoding_table_t[256];
+typedef code encoding_table_t[TABLE_SIZE];
 
 // Convert a tree to an encoding table.
 encoding_table_t* compute_code_table(tree_t);

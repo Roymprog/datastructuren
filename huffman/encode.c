@@ -12,9 +12,9 @@ int main(int argc, char *argv[]) {
         tree = load_tree(argv[1]);
     } else {
         // Uncomment these lines for assignment 5.
-        // frequency_table_t* freqs = compute_frequencies(input_data);
-        // tree = compute_tree(freqs);
-        // free(freqs)
+        frequency_table_t* freqs = compute_frequencies(input_data);
+        tree = compute_tree(freqs);
+        free(freqs);
     }
 
     // Until load_tree and/or compute_tree is complete, fixed_tree()
