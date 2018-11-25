@@ -44,9 +44,6 @@ _Bool greater_than_child(frequency_table_t* freqs, int index) {
 void heapify(frequency_table_t* freqs, int heap_size) {
     for (int l = (heap_size-1)/2; l != 0; l--) {
         int i = l;
-        // tree_t current = (*freqs)[i];
-        // tree_t left_child = (*freqs)[i*2 + 1];
-        // tree_t right_child = (*freqs)[i*2 + 2];
         while(children_present(freqs, i) && greater_than_child(freqs, i)) {
             int left_value = (*freqs)[i*2 + 1]->value;
             int right_value = (*freqs)[i*2 + 2]->value;         
@@ -56,10 +53,12 @@ void heapify(frequency_table_t* freqs, int heap_size) {
             } else {
                 swap(&(*freqs)[i*2 + 2], &(*freqs)[i]);
                 i = i*2 + 2;
-            }
+            }       
         }
     }
 }
+
+
 
 tree_t compute_tree(frequency_table_t* freqs) {
     int tree_size = 0;
@@ -69,16 +68,7 @@ tree_t compute_tree(frequency_table_t* freqs) {
             tree_size++;
             (*freqs)[i] = NULL;
         }
-        // // Loop back over sorted part
-        // for (int j = i - 1; j != 0; j--) {
-        //     if ((*freqs)[i]->value > (*freqs)[j]->value) {
-        //         swap((*freqs)[i]->value, (*freqs)[j + 1]->value);
-        //         for (int k = i; k = j + 2; k--) {
-        //             swap((*freqs)[k]->value, (*freqs)[k - 1]->value);
-        //         }
-        //         break;
-        //     }
-        // }
+
     }
     
     int last_tree_element_index = tree_size -1;
