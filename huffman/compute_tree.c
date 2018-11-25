@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include "huffman.h"
 
-void swap(tree_t t1, tree_t t2) {
-    tree_t temp = t1;
-    t1 = t2;
-    t2 = temp;
+void swap(tree_t* t1, tree_t* t2) {
+    tree_t temp = *t1;
+    *t1 = *t2;
+    *t2 = temp;
 }
 
 void heapify(frequency_table_t* freqs, int heap_size) {
@@ -19,16 +19,10 @@ void heapify(frequency_table_t* freqs, int heap_size) {
             int left_value = (*freqs)[i*2 + 1]->value;
             int right_value = (*freqs)[i*2 + 2]->value;         
             if (left_value <= right_value) {
-                tree_t temp = (*freqs)[i*2 + 1];
-                (*freqs)[i*2 + 1] = (*freqs)[i];
-                 (*freqs)[i] = temp;
-                // swap((*freqs)[i*2 + 1], (*freqs)[i]);
+                swap(&(*freqs)[i*2 + 1], &(*freqs)[i]);
                 i = i*2 + 1;
             } else {
-                tree_t temp = (*freqs)[i*2 + 2];
-                (*freqs)[i*2 + 2] = (*freqs)[i];
-                 (*freqs)[i] = temp;
-                // swap((*freqs)[i*2 + 2], (*freqs)[i]);
+                swap(&(*freqs)[i*2 + 2], &(*freqs)[i]);
                 i = i*2 + 2;
             }
         }
