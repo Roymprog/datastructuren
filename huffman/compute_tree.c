@@ -1,6 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
 #include "huffman.h"
 
 void swap(tree_t* t1, tree_t* t2) {
