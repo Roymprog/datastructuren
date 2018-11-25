@@ -16,6 +16,6 @@ int print_code(code c) {
     }
 
     printf("%d", c.bin_encoding);
-    return c.bin_encoding;
+    return c.encoding;
 }
 
