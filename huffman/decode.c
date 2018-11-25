@@ -24,9 +24,7 @@ int main(void) {
     if (tree == 0) {
         tree = fixed_tree();
     }
-    print_tree(tree);
-
-    putchar('\n');
+    // print_tree(tree);
     
     // Get second output line with encoded characters
     char* encoded = my_get_line();
