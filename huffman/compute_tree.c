@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "huffman.h"
 
 void swap(tree_t* t1, tree_t* t2) {
@@ -8,14 +9,45 @@ void swap(tree_t* t1, tree_t* t2) {
     *t2 = temp;
 }
 
+_Bool children_present(frequency_table_t* freqs, int index) {
+    if (((*freqs)[index*2 + 1] != NULL) && ((*freqs)[index*2 + 2] != NULL)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+_Bool greater_than_left_child(frequency_table_t* freqs, int index) {
+    if ((*freqs)[index]->value >= (*freqs)[index*2 + 1]->value) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+_Bool greater_than_right_child(frequency_table_t* freqs, int index) {
+    if ((*freqs)[index]->value >= (*freqs)[index*2 + 2]->value) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+_Bool greater_than_child(frequency_table_t* freqs, int index) {
+    if ( greater_than_left_child(freqs, i) || greater_than_right_child(freqs, i)) {
+        return true; 
+    } else {
+        return false;
+    }
+}
+
 void heapify(frequency_table_t* freqs, int heap_size) {
     for (int l = (heap_size-1)/2; l != 0; l--) {
         int i = l;
         // tree_t current = (*freqs)[i];
         // tree_t left_child = (*freqs)[i*2 + 1];
         // tree_t right_child = (*freqs)[i*2 + 2];
-        while( (((*freqs)[i*2 + 1] != NULL) && ((*freqs)[i*2 + 2] != NULL)) && 
-                ((((*freqs)[i])->value >= ((*freqs)[i*2 + 1])->value) || (((*freqs)[i])->value >=  ((*freqs)[i*2 + 2])->value))) {
+        while(children_present(freqs, i) && greater_than_child(freqs, i)) {
             int left_value = (*freqs)[i*2 + 1]->value;
             int right_value = (*freqs)[i*2 + 2]->value;         
             if (left_value <= right_value) {
