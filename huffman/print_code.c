@@ -2,20 +2,27 @@
 #include "huffman.h"
 
 int print_code(code c) {
-    int non_zeros = 1;
+	if (c.code_length == 0) {
+		return -1;
+	}
+
+	// There is at least 1 character in the binary code
+	int bin_character_count = 1;
 	int number = c.bin_encoding;
 
+	// Rather savage way of counting the amount of characters in "binary" integer,
+	// loops cuts off last number of "binary" integer each iteration
 	while((number = number / 10)) {
-		non_zeros++;
+		bin_character_count++;
 	} 
 
-	int zero_count = c.code_length - non_zeros;
+	int leading_zero_count = c.code_length - bin_character_count;
 
-    for (int i = 0; i < zero_count; i++){
+	for (int i = 0; i < leading_zero_count; i++){
 		putchar('0');
-    }
+	}
 
-    printf("%d", c.bin_encoding);
-    return c.encoding;
+	printf("%d", c.bin_encoding);
+	return c.encoding;
 }
 

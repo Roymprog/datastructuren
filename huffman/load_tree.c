@@ -18,6 +18,10 @@ tree_t load_tree(char* input) {
 
     struct stack* stack = stack_init();
 
+    if (stack == 0) {
+        return 0;
+    }
+
     while ((*input != '\0') && (*input != '\n')) {
         stack_push(stack, input);
         input = (input + 1);
