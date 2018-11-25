@@ -20,19 +20,26 @@ void set_table_node(encoding_table_t* table, tree_t node, int value, int bin_val
         (*table)[index] = entry;
     }
 
-    // Increase length
+    // Set correct values for table nodes, binary shift
+    int value_left = value*2;
+    int value_right = value*2 + 1;
+
+    // Calculate the "binary integer" excluding the leading zeros,
+    int bin_value_left = bin_value*10;
+    int bin_value_right = bin_value*10 + 1;
+
+    // Increase code_length
     length++;
-    // Binary shift for left node
-    value = value*2;
-    bin_value = bin_value*10;
-    set_table_node(table, node->left, value, bin_value, length);
-    // Binary shift for right node
-    value++;
-    bin_value++;
-    set_table_node(table, node->right, value, bin_value, length);
+
+    set_table_node(table, node->left, value_left, bin_value_left, length);
+    set_table_node(table, node->right, value_right, bin_value_right, length);
 }
 
 encoding_table_t* compute_code_table(tree_t root) {
+    if (root == NULL) {
+        return NULL;
+    }
+
     encoding_table_t* result = calloc(1, sizeof(encoding_table_t));
     if (result == 0) {
         perror("calloc");
