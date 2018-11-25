@@ -53,8 +53,5 @@ encoding_table_t* compute_code_table(tree_t root) {
 }
 
 void free_code_table(encoding_table_t* table) {
-
-    // ... SOME CODE MISSING ...
-
     free(table);
 }

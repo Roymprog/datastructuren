@@ -30,6 +30,12 @@ int main(int argc, char *argv[]) {
     // Convert the tree to a code table.
     encoding_table_t *table = compute_code_table(tree);
 
+    if (table == NULL) {
+        free(input_data);
+        free_tree(tree);
+        return 1;
+    }
+
     // print_code_table(table);
 
     int num_printed = 0;
