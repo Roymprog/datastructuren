@@ -49,6 +49,7 @@ tree_t compute_tree(frequency_table_t* freqs) {
 
     // Combine nodes from sorted array until one element is left, which is the last
     while(first_element != last_element) {
+        // Get top 2 elements to combine into new node
         tree_t first = get_minimun_value_node(freqs, &first_element);
         tree_t second = get_minimun_value_node(freqs, &first_element);
 
@@ -68,7 +69,6 @@ tree_t compute_tree(frequency_table_t* freqs) {
     
     return get_minimun_value_node(freqs, &first_element);
 }
-
 
 void free_tree(tree_t tree) {
     if (!tree) {

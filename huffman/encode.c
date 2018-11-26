@@ -17,10 +17,10 @@ int main(int argc, char *argv[]) {
         free(freqs);
     }
 
-    // Until load_tree and/or compute_tree is complete, fixed_tree()
-    // returns a premade tree.
-    if (tree == 0) {
+    if (tree == NULL) {
+        free(input_data);
         tree = fixed_tree();
+        return 1;
     }
 
     // Show the tree being used.
@@ -29,12 +29,6 @@ int main(int argc, char *argv[]) {
 
     // Convert the tree to a code table.
     encoding_table_t *table = compute_code_table(tree);
-
-    if (table == NULL) {
-        free(input_data);
-        free_tree(tree);
-        return 1;
-    }
 
     // print_code_table(table);
 
