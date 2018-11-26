@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
 
     if (tree == NULL) {
         free(input_data);
-        tree = fixed_tree();
         return 1;
     }
 

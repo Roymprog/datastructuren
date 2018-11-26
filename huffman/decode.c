@@ -22,9 +22,9 @@ int main(void) {
     tree_t tree = load_tree(tree_line);
 
     if (tree == 0) {
-        tree = fixed_tree();
+        free(tree_line);
+        return 1;
     }
-    // print_tree(tree);
     
     // Get second output line with encoded characters
     char* encoded = my_get_line();
