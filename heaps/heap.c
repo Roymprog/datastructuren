@@ -40,7 +40,7 @@ struct heap* prioq_init(int (*compare)(const void*, const void*)) {
 }
 
 long int prioq_size(struct heap *h) {
-    // ... CODE MISSING HERE ....
+    return array_size(h->array);
 }
 
 static
@@ -56,11 +56,18 @@ int prioq_cleanup(prioq *h, void free_func(void*)) {
 
 static
 int heap_insert(struct heap *h, void *p) {
-    // ... CODE MISSING HERE ....
+    struct array* array = h->array;
+    array_append(array, p);
+    long int index = (long int) prioq_size(h);
+ 
+    while((array_get(array, index) != NULL && array_get(array, (index - 1)/2) != NULL) &&
+        h->compare(array_get(array, index), array_get(array, (index - 1)/2))) {
+        void* tmp = array_get(array, (index - 1)/2);
+        array_set(array, (index - 1)/2, array_get(array, index));
+        array_set(array, index, tmp);
+        index = (index -1) /2;
+    }
 
-    // To compare items in the heap these heaps functions can use the stored
-    // compare function pointer in the following way:
-    //  if (h->compare(arg1, arg1)) { ...
 }
 
 int prioq_insert(prioq *h, void *p) {
@@ -69,7 +76,7 @@ int prioq_insert(prioq *h, void *p) {
 
 static
 void* heap_pop(struct heap *h) {
-    // ... CODE MISSING HERE ....
+    return array_pop(h->array);
 }
 
 void* prioq_pop(prioq *h) {
