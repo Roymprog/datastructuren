@@ -7,13 +7,32 @@
 
 static
 struct heap* heap_init(int (*compare)(const void*, const void*)) {
-    // ... CODE MISSING HERE ....
+    if (compare == NULL) {
+        return NULL;
+    }
 
-    // Store compare the function pointer argument in the struct if
-    // the struct pointer is called 'h':
-    // h->compare = compare;
+    // initialize array
+    long initial_capacity = 0;
+    struct array* array = array_init(initial_capacity);
 
-    // ... CODE MISSING HERE ....
+    // return on failed malloc
+    if (array == NULL) {
+        return NULL;
+    }
+
+    struct heap* heap = malloc(sizeof(struct heap));
+
+    // in case malloc fails clean up array and return 
+    if (heap == NULL) {
+        array_cleanup(array, NULL);
+        return NULL;
+    }
+
+    // set heap properties
+    heap->array = array;
+    heap->compare = compare;
+
+    return heap;
 }
 
 struct heap* prioq_init(int (*compare)(const void*, const void*)) {
@@ -26,11 +45,13 @@ long int prioq_size(struct heap *h) {
 
 static
 int heap_cleanup(struct heap *h, void free_func(void*)) {
-    // ... CODE MISSING HERE ....
+    array_cleanup(h->array, free_func);
+    free(h);
+    return 0;
 }
 
 int prioq_cleanup(prioq *h, void free_func(void*)) {
-    // ... CODE MISSING HERE ....
+    heap_cleanup(h, free_func);
 }
 
 static
