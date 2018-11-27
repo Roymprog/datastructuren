@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdbool.h>
 
 #include "array.h"
 #include "prioq.h"
@@ -54,18 +55,26 @@ int prioq_cleanup(prioq *h, void free_func(void*)) {
     heap_cleanup(h, free_func);
 }
 
+_Bool has_parent(struct heap* h, int index) {
+    return (array_get(h->array, (index - 1)/2) != NULL);
+}
+
+_Bool input_not_null(struct heap* h, int index) {
+    return (array_get(h->array, index) != NULL && has_parent(h, index));
+}
+
 static
 int heap_insert(struct heap *h, void *p) {
     struct array* array = h->array;
     array_append(array, p);
     long int index = (long int) prioq_size(h);
  
-    while((array_get(array, index) != NULL && array_get(array, (index - 1)/2) != NULL) &&
-        h->compare(array_get(array, index), array_get(array, (index - 1)/2))) {
+    while(input_not_null(h, index) && 
+          h->compare(array_get(array, index), array_get(array, (index - 1)/2))) {
         void* tmp = array_get(array, (index - 1)/2);
         array_set(array, (index - 1)/2, array_get(array, index));
         array_set(array, index, tmp);
-        index = (index -1) /2;
+        index = (index - 1) /2;
     }
 
 }
