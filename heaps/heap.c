@@ -63,29 +63,72 @@ _Bool input_not_null(struct heap* h, int index) {
     return (array_get(h->array, index) != NULL && has_parent(h, index));
 }
 
+_Bool is_smaller_than_parent(struct heap* h, int index) {
+    return (h->compare(array_get(h->array, (index - 1)/2), array_get(h->array, index)) >= 0);
+}
+
 static
 int heap_insert(struct heap *h, void *p) {
     struct array* array = h->array;
     array_append(array, p);
-    long int index = (long int) prioq_size(h);
- 
-    while(input_not_null(h, index) && 
-          h->compare(array_get(array, index), array_get(array, (index - 1)/2))) {
+    long int index = (long int) prioq_size(h) - 1;
+    while(index > 0 && input_not_null(h, index) && is_smaller_than_parent(h, index)) {
         void* tmp = array_get(array, (index - 1)/2);
         array_set(array, (index - 1)/2, array_get(array, index));
         array_set(array, index, tmp);
         index = (index - 1) /2;
     }
-
 }
 
 int prioq_insert(prioq *h, void *p) {
     return heap_insert(h, p);
 }
 
+_Bool children_present(struct heap* h, int index) {
+    return (array_get(h->array, index*2 + 1) != NULL && array_get(h->array, index*2 + 2) != NULL);
+}
+
+_Bool greater_than_right_child(struct heap* h, int index) {
+    return (h->compare(array_get(h->array, index), array_get(h->array, index*2 + 2)) >= 0);
+}
+
+_Bool greater_than_left_child(struct heap* h, int index) {
+    return (h->compare(array_get(h->array, index), array_get(h->array, index*2 + 1)) >= 0);
+}
+
+_Bool right_child_greater_than_left(struct heap* h, int index) {
+    return (h->compare(array_get(h->array, index*2 + 2), array_get(h->array, index*2 + 1)) >= 0);
+}
+
 static
 void* heap_pop(struct heap *h) {
-    return array_pop(h->array);
+    struct array* array = h->array;
+    int first = 0;
+    int last = array_size(array) - 1;
+
+    // Swap first with last
+    void* tmp = array_get(array, first);
+    array_set(array, first, array_get(array, last));
+    array_set(array, last, tmp);
+
+    void* min_element = array_pop(array);
+
+    int i = 0;
+    while(children_present(h, i) && (greater_than_right_child(h, i) || greater_than_left_child(h, i) )) {
+        if (right_child_greater_than_left(h, i)) {
+            void* tmp = array_get(array, i*2 + 1);
+            array_set(array, i*2 + 1, array_get(array, i));
+            array_set(array, i, tmp);
+            i = i*2 + 1;
+        } else {
+            void* tmp = array_get(array, i*2 + 2);
+            array_set(array, i*2 + 2, array_get(array, i));
+            array_set(array, i, tmp);
+            i = i*2 + 2;
+        }
+    }
+
+    return min_element;
 }
 
 void* prioq_pop(prioq *h) {
