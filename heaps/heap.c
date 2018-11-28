@@ -51,15 +51,15 @@ int heap_cleanup(struct heap *h, void free_func(void*)) {
     return 0;
 }
 
-int parent_index(int index) {
+long int parent_index(long int index) {
     return (index -1)/2;
 }
 
-int left_child_index(int index) {
+long int left_child_index(long int index) {
     return (index*2 + 1);
 }
 
-int right_child_index(int index) {
+long int right_child_index(long int index) {
     return (index*2 + 2);
 }
 
@@ -67,20 +67,20 @@ int prioq_cleanup(prioq *h, void free_func(void*)) {
     heap_cleanup(h, free_func);
 }
 
-_Bool has_parent(struct heap* h, int index) {
+_Bool has_parent(struct heap* h, long int index) {
     return (array_get(h->array, parent_index(index)) != NULL);
 }
 
-_Bool input_not_null(struct heap* h, int index) {
+_Bool input_not_null(struct heap* h, long int index) {
     return (array_get(h->array, index) != NULL && has_parent(h, index));
 }
 
-_Bool is_smaller_than_parent(struct heap* h, int index) {
+_Bool is_smaller_than_parent(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, parent_index(index)), array_get(h->array, index)) >= 0);
 }
 
 
-void swap(struct heap* h, int index1, int index2) {
+void swap(struct heap* h, long int index1, long int index2) {
     struct array* array = h->array;
     void* tmp = array_get(array, index1);
     array_set(array, index1, array_get(array, index2));
@@ -89,6 +89,9 @@ void swap(struct heap* h, int index1, int index2) {
 
 static
 int heap_insert(struct heap *h, void *p) {
+    if (p == NULL) {
+        return -1;
+    }
     struct array* array = h->array;
     array_append(array, p);
     long int index = (long int) prioq_size(h) - 1;
@@ -96,39 +99,46 @@ int heap_insert(struct heap *h, void *p) {
         swap(h, index, parent_index(index));
         index = parent_index(index);
     }
+
+    return 0;
 }
 
 int prioq_insert(prioq *h, void *p) {
     return heap_insert(h, p);
 }
 
-_Bool children_present(struct heap* h, int index) {
+_Bool children_present(struct heap* h, long int index) {
     return (array_get(h->array, left_child_index(index)) != NULL && array_get(h->array, right_child_index(index)) != NULL);
 }
 
-_Bool greater_than_right_child(struct heap* h, int index) {
+_Bool greater_than_right_child(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, index), array_get(h->array, right_child_index(index))) >= 0);
 }
 
-_Bool greater_than_left_child(struct heap* h, int index) {
+_Bool greater_than_left_child(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, index), array_get(h->array, left_child_index(index))) >= 0);
 }
 
-_Bool right_child_greater_than_left(struct heap* h, int index) {
+_Bool right_child_greater_than_left(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, right_child_index(index)), array_get(h->array, left_child_index(index))) >= 0);
 }
 
 static
 void* heap_pop(struct heap *h) {
     struct array* array = h->array;
-    int first = 0;
-    int last = array_size(array) - 1;
+
+    if (array_size(array) == 0) {
+        return NULL;
+    }
+
+    long int first = 0;
+    long int last = array_size(array) - 1;
 
     swap(h, first, last);
 
     void* min_element = array_pop(array);
 
-    int i = 0;
+    long int i = 0;
     while(children_present(h, i) && (greater_than_right_child(h, i) || greater_than_left_child(h, i) )) {
         if (right_child_greater_than_left(h, i)) {
             swap(h, i, left_child_index(i));
