@@ -67,15 +67,20 @@ _Bool is_smaller_than_parent(struct heap* h, int index) {
     return (h->compare(array_get(h->array, (index - 1)/2), array_get(h->array, index)) >= 0);
 }
 
+void swap(struct heap* h, int index1, int index2) {
+    struct array* array = h->array;
+    void* tmp = array_get(array, index1);
+    array_set(array, index1, array_get(array, index2));
+    array_set(array, index2, tmp);
+}
+
 static
 int heap_insert(struct heap *h, void *p) {
     struct array* array = h->array;
     array_append(array, p);
     long int index = (long int) prioq_size(h) - 1;
     while(index > 0 && input_not_null(h, index) && is_smaller_than_parent(h, index)) {
-        void* tmp = array_get(array, (index - 1)/2);
-        array_set(array, (index - 1)/2, array_get(array, index));
-        array_set(array, index, tmp);
+        swap(h, index, (index-1)/2);
         index = (index - 1) /2;
     }
 }
@@ -106,24 +111,17 @@ void* heap_pop(struct heap *h) {
     int first = 0;
     int last = array_size(array) - 1;
 
-    // Swap first with last
-    void* tmp = array_get(array, first);
-    array_set(array, first, array_get(array, last));
-    array_set(array, last, tmp);
+    swap(h, first, last);
 
     void* min_element = array_pop(array);
 
     int i = 0;
     while(children_present(h, i) && (greater_than_right_child(h, i) || greater_than_left_child(h, i) )) {
         if (right_child_greater_than_left(h, i)) {
-            void* tmp = array_get(array, i*2 + 1);
-            array_set(array, i*2 + 1, array_get(array, i));
-            array_set(array, i, tmp);
+            swap(h, i, i*2 + 1);
             i = i*2 + 1;
         } else {
-            void* tmp = array_get(array, i*2 + 2);
-            array_set(array, i*2 + 2, array_get(array, i));
-            array_set(array, i, tmp);
+            swap(h, i, i*2 + 2);
             i = i*2 + 2;
         }
     }
