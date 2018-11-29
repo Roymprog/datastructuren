@@ -46,6 +46,10 @@ long int prioq_size(struct heap *h) {
 
 static
 int heap_cleanup(struct heap *h, void free_func(void*)) {
+    if (h == NULL) {
+        return 1;
+    }
+    
     array_cleanup(h->array, free_func);
     free(h);
     return 0;
@@ -64,7 +68,7 @@ long int right_child_index(long int index) {
 }
 
 int prioq_cleanup(prioq *h, void free_func(void*)) {
-    heap_cleanup(h, free_func);
+    return heap_cleanup(h, free_func);
 }
 
 _Bool has_parent(struct heap* h, long int index) {

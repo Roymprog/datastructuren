@@ -100,8 +100,6 @@ int main(int argc, char *argv[]) {
             }
             patient->name = name_cpy;
             patient->age = age;
-            // printf("name: %s\n", patient->name);
-            // printf("age: %d\n", patient->age);
 
             prioq_insert(queue, patient);
 
