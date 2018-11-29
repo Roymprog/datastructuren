@@ -50,6 +50,7 @@ void print_and_free(prioq* queue) {
         printf("%s\n", patient->name);
         free_func(patient);
     }
+    
 }
 
 int main(int argc, char *argv[]) {
@@ -93,8 +94,9 @@ int main(int argc, char *argv[]) {
             int age = (int) atoi(strtok(NULL, s));
 
             patient_t* patient = malloc(sizeof(patient_t));
-
+        
             if (patient == NULL) {
+                free(name_cpy);
                 prioq_cleanup(queue, free_func);
                 return 1;
             }

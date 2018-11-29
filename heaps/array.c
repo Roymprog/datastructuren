@@ -16,6 +16,7 @@ struct array *array_init(long initial_capacity) {
     a->data = (void **) malloc((unsigned long) initial_capacity *
                                 sizeof (void*));
     if (a->data == NULL) {
+        free(a);
         return NULL;
     }
     a->size = 0;
