@@ -107,24 +107,38 @@ int prioq_insert(prioq *h, void *p) {
     return heap_insert(h, p);
 }
 
-_Bool children_present(struct heap* h, long int index) {
-    return (array_get(h->array, left_child_index(index)) != NULL && array_get(h->array, right_child_index(index)) != NULL);
-}
-
 _Bool greater_than_right_child(struct heap* h, long int index) {
-    return (h->compare(array_get(h->array, index), array_get(h->array, right_child_index(index))) >= 0);
+    if (array_get(h->array, right_child_index(index)) == NULL) {
+        return false;
+    }
+
+    return (h->compare(array_get(h->array, index), array_get(h->array, right_child_index(index))) > 0);
 }
 
 _Bool greater_than_left_child(struct heap* h, long int index) {
-    return (h->compare(array_get(h->array, index), array_get(h->array, left_child_index(index))) >= 0);
+    if (array_get(h->array, left_child_index(index)) == NULL) {
+        return false;
+    }
+
+    return (h->compare(array_get(h->array, index), array_get(h->array, left_child_index(index))) > 0);
 }
 
 _Bool right_child_greater_than_left(struct heap* h, long int index) {
-    return (h->compare(array_get(h->array, right_child_index(index)), array_get(h->array, left_child_index(index))) >= 0);
+    return (h->compare(array_get(h->array, right_child_index(index)), array_get(h->array, left_child_index(index))) > 0);
+}
+
+static
+void print_heap(struct heap* h) {
+    printf("\n");
+    for (int i = 0; i < array_size(h->array) ; i++) {
+        printf("%d ", *(int*)array_get(h->array, i));
+    }
+    printf("\n");
 }
 
 static
 void* heap_pop(struct heap *h) {
+    print_heap(h);
     struct array* array = h->array;
 
     if (array_size(array) == 0) {
@@ -139,8 +153,8 @@ void* heap_pop(struct heap *h) {
     void* min_element = array_pop(array);
 
     long int i = 0;
-    while(children_present(h, i) && (greater_than_right_child(h, i) || greater_than_left_child(h, i) )) {
-        if (right_child_greater_than_left(h, i)) {
+    while(greater_than_right_child(h, i) || greater_than_left_child(h, i) ) {
+        if ( (right_child_index(i) >= last ) || right_child_greater_than_left(h, i)) {
             swap(h, i, left_child_index(i));
             i = left_child_index(i);
         } else {
@@ -148,7 +162,7 @@ void* heap_pop(struct heap *h) {
             i = right_child_index(i);
         }
     }
-
+    print_heap(h);
     return min_element;
 }
 
