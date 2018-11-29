@@ -35,7 +35,7 @@ static int compare_patient_name(const void *a, const void *b)
 
 static int compare_patient_age(const void *a, const void *b)
 {
-    // ... CODE MISSING HERE ....
+    return (((const patient_t* ) a)->age - ((const patient_t* ) b)->age);
 }
 
 void free_func(void* patient) {
