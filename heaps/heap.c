@@ -128,17 +128,7 @@ _Bool right_child_greater_than_left(struct heap* h, long int index) {
 }
 
 static
-void print_heap(struct heap* h) {
-    printf("\n");
-    for (int i = 0; i < array_size(h->array) ; i++) {
-        printf("%d ", *(int*)array_get(h->array, i));
-    }
-    printf("\n");
-}
-
-static
 void* heap_pop(struct heap *h) {
-    print_heap(h);
     struct array* array = h->array;
 
     if (array_size(array) == 0) {
@@ -162,7 +152,7 @@ void* heap_pop(struct heap *h) {
             i = right_child_index(i);
         }
     }
-    print_heap(h);
+
     return min_element;
 }
 

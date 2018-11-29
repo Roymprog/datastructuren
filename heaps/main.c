@@ -24,7 +24,7 @@ int parse_options(struct config *cfg, int argc, char *argv[]);
 
 typedef struct {
     char *name;
-    // ... CODE MISSING HERE ....
+    int age;
 } patient_t;
 
 static int compare_patient_name(const void *a, const void *b)
@@ -36,6 +36,20 @@ static int compare_patient_name(const void *a, const void *b)
 static int compare_patient_age(const void *a, const void *b)
 {
     // ... CODE MISSING HERE ....
+}
+
+void free_func(void* patient) {
+    patient_t* p = (patient_t *) patient;
+    free(p->name);
+    free(p);
+}
+
+void print_and_free(prioq* queue) {
+    patient_t* patient;
+    while ( (patient = prioq_pop(queue)) ) {
+        printf("%s\n", patient->name);
+        free_func(patient);
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -56,26 +70,61 @@ int main(int argc, char *argv[]) {
     for (int iterations = 0;;) {
         while (1) {
             char *s = fgets(buf, BUF_SIZE, stdin);
+            
             if (s == NULL) {
+                prioq_cleanup(queue, free_func);
                 fprintf(stderr, "Unexpected end of file. exiting\n");
                 return EXIT_FAILURE;
             }
+            
+            if (s[0] == '.') {
+                break;
+            }
 
-            // ... CODE MISSING HERE ....
+            token = strtok(s, " ");
+            name_cpy = malloc(strlen(token) + 1);
+
+            if (name_cpy == NULL) {
+                prioq_cleanup(queue, free_func);
+                return 1;
+            }
+
+            strcpy(name_cpy, token);
+            int age = (int) atoi(strtok(NULL, s));
+
+            patient_t* patient = malloc(sizeof(patient_t));
+
+            if (patient == NULL) {
+                prioq_cleanup(queue, free_func);
+                return 1;
+            }
+            patient->name = name_cpy;
+            patient->age = age;
+            // printf("name: %s\n", patient->name);
+            // printf("age: %d\n", patient->age);
+
+            prioq_insert(queue, patient);
 
         }
 
+        patient_t* patient = prioq_pop(queue);
+
+        if (patient != NULL) {
+            printf("%s\n", patient->name);
+            free_func(patient);
+        } 
+        
         printf(".\n"); // End turn.
 
         if (++iterations == 10) {
 
-            // ... CODE MISSING HERE ....
+            print_and_free(queue);
 
             break;
         }
     }
 
-    // ... CODE MISSING HERE ....
+    prioq_cleanup(queue, free_func);
 
     return EXIT_SUCCESS;
 }
