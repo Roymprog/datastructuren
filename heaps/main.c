@@ -25,6 +25,7 @@ int parse_options(struct config *cfg, int argc, char *argv[]);
 typedef struct {
     char *name;
     int age;
+    int duration;
 } patient_t;
 
 static int compare_patient_name(const void *a, const void *b)
@@ -57,6 +58,7 @@ int main(int argc, char *argv[]) {
     char *token, *name_cpy;
     prioq *queue;
     struct config cfg;
+    patient_t* patient_in_treatment = NULL;
 
     if (parse_options(&cfg, argc, argv) != 0) {
         return EXIT_FAILURE;
@@ -82,16 +84,29 @@ int main(int argc, char *argv[]) {
                 break;
             }
 
-            token = strtok(s, " ");
-            name_cpy = malloc(strlen(token) + 1);
+            char* saveptr = NULL;
+            int i = 1, age = 0, duration = 0;
+            char* str = NULL;
+            for (str = s; ; i++, str = NULL) {
+                token = __strtok_r(str, " ", &saveptr);
+                if (token == NULL)
+                    break;
 
-            if (name_cpy == NULL) {
-                prioq_cleanup(queue, free_func);
-                return 1;
+                if (i == 1) {
+                    name_cpy = malloc(strlen(token) + 1);
+
+                    if (name_cpy == NULL) {
+                        prioq_cleanup(queue, free_func);
+                        return 1;
+                    }
+
+                    strcpy(name_cpy, token);
+                } else if (i == 2) {
+                    age = (int) atoi(token);
+                } else if (i == 3) {
+                    duration = (int) atoi(token);
+                }
             }
-
-            strcpy(name_cpy, token);
-            int age = (int) atoi(strtok(NULL, s));
 
             patient_t* patient = malloc(sizeof(patient_t));
         
@@ -100,25 +115,49 @@ int main(int argc, char *argv[]) {
                 prioq_cleanup(queue, free_func);
                 return 1;
             }
-            patient->name = name_cpy;
-            patient->age = age;
+            if (name_cpy != NULL) {
+                patient->name = name_cpy;
+            }
+            if (age != 0) {
+                patient->age = age;
+            }
+            if (duration != 0) {
+                patient->duration = duration;
+            } else {
+                patient->duration = 1;
+            }
 
             prioq_insert(queue, patient);
-
         }
-
-        patient_t* patient = prioq_pop(queue);
-
-        if (patient != NULL) {
-            printf("%s\n", patient->name);
-            free_func(patient);
-        } 
         
+        // Make sure there is a patient in treatment or NULL if queue empty
+        if (patient_in_treatment == NULL) {
+            patient_in_treatment = prioq_pop(queue);
+        }
+        
+        if (patient_in_treatment != NULL) {
+            if( patient_in_treatment->duration <= 1) {
+                printf("%s\n", patient_in_treatment->name);
+                free_func(patient_in_treatment);
+                patient_in_treatment = NULL;
+            } else {
+                patient_in_treatment->duration--;
+            }        
+        }
+        
+
         printf(".\n"); // End turn.
 
         if (++iterations == 10) {
 
+            if (patient_in_treatment != NULL) {
+                printf("%s\n", patient_in_treatment->name);
+                free_func(patient_in_treatment);
+                patient_in_treatment = NULL;
+            }
+
             print_and_free(queue);
+
 
             break;
         }
