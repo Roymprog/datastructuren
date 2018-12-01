@@ -45,7 +45,7 @@ void free_func(void* patient) {
     free(p);
 }
 
-void print_and_free(prioq* queue) {
+void release_waiting_patients(prioq* queue) {
     patient_t* patient;
     while ( (patient = prioq_pop(queue)) ) {
         printf("%s\n", patient->name);
@@ -54,8 +54,69 @@ void print_and_free(prioq* queue) {
     
 }
 
-int main(int argc, char *argv[]) {
+void treat_patient(patient_t** p) {
+    if( (*p)->duration <= 1) {
+        printf("%s\n", (*p)->name);
+        free_func(*p);
+        *p = NULL;
+    } else {
+        (*p)->duration--;
+    }        
+}
+
+void release_patient_in_treatment(patient_t** p) {
+    printf("%s\n", (*p)->name);
+    free_func(*p);
+    *p = NULL;
+}
+
+patient_t* create_patient_from_input(char* input) {
     char *token, *name_cpy;
+    char* saveptr = NULL;
+    int i = 1, age = 0, duration = 0;
+    char* str = NULL;
+
+    for (str = input; ; i++, str = NULL) {
+        token = __strtok_r(str, " ", &saveptr);
+        if (token == NULL)
+            break;
+
+        if (i == 1) {
+            name_cpy = malloc(strlen(token) + 1);
+
+            if (name_cpy == NULL) {
+                return NULL;
+            }
+
+            strcpy(name_cpy, token);
+        } else if (i == 2) {
+            age = (int) atoi(token);
+        } else if (i == 3) {
+            duration = (int) atoi(token);
+        }
+    }
+
+    patient_t* patient = malloc(sizeof(patient_t));
+
+    if (patient == NULL) {
+        free(name_cpy);
+        return patient;
+    }
+    
+    patient->name = name_cpy;
+    patient->age = age;
+    
+    // check whether duration is provided, else provide default duration
+    if (duration != 0) {
+        patient->duration = duration;
+    } else {
+        patient->duration = 1;
+    }
+
+    return patient;
+}
+
+int main(int argc, char *argv[]) {
     prioq *queue;
     struct config cfg;
     patient_t* patient_in_treatment = NULL;
@@ -71,6 +132,7 @@ int main(int argc, char *argv[]) {
     }
 
     for (int iterations = 0;;) {
+        // Parse input line
         while (1) {
             char *s = fgets(buf, BUF_SIZE, stdin);
             
@@ -84,47 +146,11 @@ int main(int argc, char *argv[]) {
                 break;
             }
 
-            char* saveptr = NULL;
-            int i = 1, age = 0, duration = 0;
-            char* str = NULL;
-            for (str = s; ; i++, str = NULL) {
-                token = __strtok_r(str, " ", &saveptr);
-                if (token == NULL)
-                    break;
+            patient_t* patient = create_patient_from_input(s);
 
-                if (i == 1) {
-                    name_cpy = malloc(strlen(token) + 1);
-
-                    if (name_cpy == NULL) {
-                        prioq_cleanup(queue, free_func);
-                        return 1;
-                    }
-
-                    strcpy(name_cpy, token);
-                } else if (i == 2) {
-                    age = (int) atoi(token);
-                } else if (i == 3) {
-                    duration = (int) atoi(token);
-                }
-            }
-
-            patient_t* patient = malloc(sizeof(patient_t));
-        
             if (patient == NULL) {
-                free(name_cpy);
                 prioq_cleanup(queue, free_func);
-                return 1;
-            }
-            if (name_cpy != NULL) {
-                patient->name = name_cpy;
-            }
-            if (age != 0) {
-                patient->age = age;
-            }
-            if (duration != 0) {
-                patient->duration = duration;
-            } else {
-                patient->duration = 1;
+                return EXIT_FAILURE;
             }
 
             prioq_insert(queue, patient);
@@ -136,28 +162,18 @@ int main(int argc, char *argv[]) {
         }
         
         if (patient_in_treatment != NULL) {
-            if( patient_in_treatment->duration <= 1) {
-                printf("%s\n", patient_in_treatment->name);
-                free_func(patient_in_treatment);
-                patient_in_treatment = NULL;
-            } else {
-                patient_in_treatment->duration--;
-            }        
+            treat_patient(&patient_in_treatment);
         }
-        
 
         printf(".\n"); // End turn.
 
+        // Work day has ended
         if (++iterations == 10) {
-
             if (patient_in_treatment != NULL) {
-                printf("%s\n", patient_in_treatment->name);
-                free_func(patient_in_treatment);
-                patient_in_treatment = NULL;
+                release_patient_in_treatment(&patient_in_treatment);
             }
 
-            print_and_free(queue);
-
+            release_waiting_patients(queue);
 
             break;
         }
