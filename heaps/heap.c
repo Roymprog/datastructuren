@@ -96,9 +96,11 @@ int heap_insert(struct heap *h, void *p) {
     if (p == NULL) {
         return -1;
     }
+
     struct array* array = h->array;
     array_append(array, p);
     long int index = (long int) prioq_size(h) - 1;
+
     while(index > 0 && input_not_null(h, index) && is_smaller_than_parent(h, index)) {
         swap(h, index, parent_index(index));
         index = parent_index(index);
@@ -112,23 +114,30 @@ int prioq_insert(prioq *h, void *p) {
 }
 
 _Bool greater_than_right_child(struct heap* h, long int index) {
-    if (array_get(h->array, right_child_index(index)) == NULL) {
+    void* right_child = array_get(h->array, right_child_index(index));
+
+    if (right_child == NULL) {
         return false;
     }
 
-    return (h->compare(array_get(h->array, index), array_get(h->array, right_child_index(index))) > 0);
+    return (h->compare(array_get(h->array, index), right_child) > 0);
 }
 
 _Bool greater_than_left_child(struct heap* h, long int index) {
-    if (array_get(h->array, left_child_index(index)) == NULL) {
+    void* left_child = array_get(h->array, left_child_index(index));
+
+    if (left_child == NULL) {
         return false;
     }
 
-    return (h->compare(array_get(h->array, index), array_get(h->array, left_child_index(index))) > 0);
+    return (h->compare(array_get(h->array, index), left_child) > 0);
 }
 
 _Bool right_child_greater_than_left(struct heap* h, long int index) {
-    return (h->compare(array_get(h->array, right_child_index(index)), array_get(h->array, left_child_index(index))) > 0);
+    void* right_child = array_get(h->array, right_child_index(index));
+    void* left_child = array_get(h->array, left_child_index(index));
+
+    return (h->compare(right_child, left_child) > 0);
 }
 
 static

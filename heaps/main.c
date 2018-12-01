@@ -51,7 +51,6 @@ void release_waiting_patients(prioq* queue) {
         printf("%s\n", patient->name);
         free_func(patient);
     }
-    
 }
 
 void treat_patient(patient_t** p) {
@@ -131,7 +130,7 @@ int main(int argc, char *argv[]) {
         queue = prioq_init(&compare_patient_name);
     }
 
-    for (int iterations = 0;;) {
+    for (int iterations = 0; ; ) {
         // Parse input line
         while (1) {
             char *s = fgets(buf, BUF_SIZE, stdin);
