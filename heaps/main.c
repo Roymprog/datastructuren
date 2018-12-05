@@ -28,12 +28,20 @@ typedef struct {
     int duration;
 } patient_t;
 
+
+// Returns the result of alphabetically comparing two names
+// Returns an integer less than zero if a comes before b, 
+// zero if strings are the same, and a value greater than zero
+// if a comes after b
 static int compare_patient_name(const void *a, const void *b)
 {
     return strcmp(((const patient_t *) a)->name,
             ((const patient_t *) b)->name);
 }
 
+
+// Returns the age difference between person a and b, if any. 
+// Falls back to name comparison when of same age
 static int compare_patient_age(const void *a, const void *b)
 {
     const patient_t* patient_a = ((const patient_t* ) a);
@@ -46,12 +54,16 @@ static int compare_patient_age(const void *a, const void *b)
     return (patient_a->age - patient_b->age);
 }
 
+// frees a patient and also frees memory occupied
+// by name
 void free_func(void* patient) {
     patient_t* p = (patient_t *) patient;
     free(p->name);
     free(p);
 }
 
+// loops over all patients still present in the queue,
+// prints their name to stdout and frees memory
 void release_waiting_patients(prioq* queue) {
     patient_t* patient;
     while ( (patient = prioq_pop(queue)) ) {
@@ -60,22 +72,27 @@ void release_waiting_patients(prioq* queue) {
     }
 }
 
-void treat_patient(patient_t** p) {
-    if( (*p)->duration <= 1) {
-        printf("%s\n", (*p)->name);
-        free_func(*p);
-        *p = NULL;
-    } else {
-        (*p)->duration--;
-    }        
-}
-
+// Print patient's name to stdout, free patient memory 
+// and remove from being in treatment
 void release_patient_in_treatment(patient_t** p) {
     printf("%s\n", (*p)->name);
     free_func(*p);
     *p = NULL;
 }
 
+// checks whether patient's (treatment) duration is smaller
+// than 1 thereby releasing the patient
+// otherwise reduce (treatment) duration by 1 
+void treat_patient(patient_t** p) {
+    if( (*p)->duration <= 1) {
+        release_patient_in_treatment(p);
+    } else {
+        (*p)->duration--;
+    }        
+}
+
+// Parse the input from stdin and convert it to a patient
+// object, returns NULL in error case and cleans up where necessary
 patient_t* create_patient_from_input(char* input) {
     char *token, *name_cpy;
     char* saveptr = NULL;

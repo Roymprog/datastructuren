@@ -55,14 +55,16 @@ int heap_cleanup(struct heap *h, void free_func(void*)) {
     return 0;
 }
 
+// Returns the theoretical index of parent providing a node index
 long int parent_index(long int index) {
     return (index -1)/2;
 }
 
+// Returns the theoretical left child index providing a node index
 long int left_child_index(long int index) {
     return (index*2 + 1);
 }
-
+// Returns the theoretical right child index providing a node index
 long int right_child_index(long int index) {
     return (index*2 + 2);
 }
@@ -71,19 +73,18 @@ int prioq_cleanup(prioq *h, void free_func(void*)) {
     return heap_cleanup(h, free_func);
 }
 
-_Bool has_parent(struct heap* h, long int index) {
-    return (array_get(h->array, parent_index(index)) != NULL);
+// Returns true if node with index has parent, false if not
+_Bool has_parent(long int index) {
+    return (index > 0);
 }
 
-_Bool input_not_null(struct heap* h, long int index) {
-    return (array_get(h->array, index) != NULL && has_parent(h, index));
-}
-
+// Returns true if node at position index is smaller than it's parent
+// based on the heap's provided compare function, returns false otherwise
 _Bool is_smaller_than_parent(struct heap* h, long int index) {
-    return (h->compare(array_get(h->array, parent_index(index)), array_get(h->array, index)) >= 0);
+    return (h->compare(array_get(h->array, index), array_get(h->array, parent_index(index))) < 0);
 }
 
-
+// Swaps the position of nodes at index1 and index2
 void swap(struct heap* h, long int index1, long int index2) {
     struct array* array = h->array;
     void* tmp = array_get(array, index1);
@@ -101,7 +102,7 @@ int heap_insert(struct heap *h, void *p) {
     array_append(array, p);
     long int index = (long int) prioq_size(h) - 1;
 
-    while(index > 0 && input_not_null(h, index) && is_smaller_than_parent(h, index)) {
+    while(has_parent(index) && is_smaller_than_parent(h, index)) {
         swap(h, index, parent_index(index));
         index = parent_index(index);
     }
@@ -113,6 +114,8 @@ int prioq_insert(prioq *h, void *p) {
     return heap_insert(h, p);
 }
 
+// Returns true if node at index is greater than it's right child
+// based on the heap's compare function, false otherwise
 _Bool greater_than_right_child(struct heap* h, long int index) {
     void* right_child = array_get(h->array, right_child_index(index));
 
@@ -123,6 +126,8 @@ _Bool greater_than_right_child(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, index), right_child) > 0);
 }
 
+// Returns true if node at index is greater than it's left child
+// based on the heap's compare function, false otherwise
 _Bool greater_than_left_child(struct heap* h, long int index) {
     void* left_child = array_get(h->array, left_child_index(index));
 
@@ -133,6 +138,8 @@ _Bool greater_than_left_child(struct heap* h, long int index) {
     return (h->compare(array_get(h->array, index), left_child) > 0);
 }
 
+// Returns true if right_child node see from index is greater than 
+// it's left child based on the heap's compare function, false otherwise
 _Bool right_child_greater_than_left(struct heap* h, long int index) {
     void* right_child = array_get(h->array, right_child_index(index));
     void* left_child = array_get(h->array, left_child_index(index));
