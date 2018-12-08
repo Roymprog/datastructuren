@@ -30,13 +30,15 @@ static int global_node_counter = 0;
  * failure. */
 static node *make_node(int data) {
 
-    node* node = malloc(sizeof(node));
+    node* node = malloc(sizeof(struct node));
 
     if (node == NULL) {
         return node;
     }
 
     node->data = data;
+    node->lhs = NULL;
+    node->rhs = NULL;
 
     return node;
 }
@@ -83,7 +85,7 @@ int tree_check(struct tree *tree) {
 }
 
 struct tree *tree_init(int turbo) {
-
+    printf("initializing tree\n");
     struct tree* tree = malloc(sizeof(struct tree));
 
     if ( tree == NULL) {
@@ -99,7 +101,26 @@ _Bool has_children(struct node* node) {
     return (node->lhs != NULL) || (node->rhs != NULL);
 }
 
+void insert(struct node** current, struct node* new_node) {
+            printf("running insert\n");
+
+    if (*current == NULL) {
+        printf("inserting new node\n");
+        *current = new_node;
+        return;
+    }
+
+    if ( new_node->data < (*current)->data ) {
+        printf("lhs");
+        insert(&((*current)->lhs), new_node);
+    } else {
+        printf("rhs");
+        insert(&((*current)->rhs), new_node);
+    }
+}
+
 int tree_insert(struct tree *tree, int data) {
+    printf("running tree insert\n");
     if ( tree == NULL ) {
         return -1;
     }
@@ -111,22 +132,33 @@ int tree_insert(struct tree *tree, int data) {
     struct node* node = make_node(data);
 
     if (node == NULL) {
+            printf("node is null");
+
+        tree_cleanup(tree);
         return -1;
     }
 
-    struct node* node = tree->root;
-
-    while ( has_children(node) ) {
-       
-    }
-
+    insert(&(tree->root), node);
+    
     return 0;
 }
 
+int node_find(struct node* node, int data) {
+    if (node == NULL) {
+        return 0;
+    }
+
+    if ( data > node->data) {
+        node_find(node->rhs, data);
+    } else if( data < node->data) {
+        node_find(node->lhs, data);
+    } else {
+        return 1;
+    }
+}
+
 int tree_find(struct tree *tree, int data) {
-
-    // ... SOME CODE MISSING HERE ...
-
+    return node_find(tree->root, data);
 }
 
 int tree_remove(struct tree *tree, int data) {
@@ -144,7 +176,7 @@ void tree_print(struct tree *tree) {
 void node_cleanup(struct node* node) {
     if ( node == NULL) {
         return;
-    }
+    } 
 
     node_cleanup(node->lhs);
     node_cleanup(node->rhs);
@@ -156,7 +188,7 @@ void tree_cleanup(struct tree *tree) {
     if ( tree == NULL ) {
         return;
     }
-
+    printf("cleaning up\n");
     node_cleanup(tree->root);
 
     free(tree);
