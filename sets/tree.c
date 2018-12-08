@@ -184,6 +184,16 @@ _Bool is_right_child(struct node* n) {
     return n->data > n->parent->data;
 }
 
+// Replaces the node that parent of n points at by node "new"
+// depending on whether n is the left child or the right child
+void point_parent_to_new(struct node* n, struct node* new) {
+    if (is_right_child(n)) {
+        n->parent->rhs = new;
+    } else {
+        n->parent->lhs = new;
+    }
+}
+
 void swap(struct tree* tree, struct node** n1, struct node** n2) {
     struct node* tmp = (*n1);
 
@@ -195,10 +205,8 @@ void swap(struct tree* tree, struct node** n1, struct node** n2) {
     // corner case where to be swapped is root
     if ((*n1)->parent == NULL) {
         tree->root = *n2;
-    } else if (is_right_child(*n1)) {
-        (*n1)->parent->rhs = *n2;
     } else {
-        (*n1)->parent->lhs = *n2;
+        point_parent_to_new(*n1, *n2);
     }
 
     (*n2)->lhs = tmp->lhs;
@@ -206,7 +214,7 @@ void swap(struct tree* tree, struct node** n1, struct node** n2) {
     (*n2)->parent = tmp->parent;
     (*n2)->children = tmp->children;
 
-    // n2 is always right child
+    // n2 is always the right child of its parent
     (*n2)->parent->rhs = *n1;
 }
 
@@ -214,31 +222,16 @@ void delete(struct tree* tree, struct node** node)  {
     struct node* n = *node;
     
     if (!has_children(n)) {
-        if (is_right_child(n)) {
-            n->parent->rhs = NULL;
-        } else {
-            n->parent->lhs = NULL;
-        }
+        point_parent_to_new(n, NULL);
         free(n);
-    } else if (n->children == 1) {
-        if (n->lhs != NULL) {
-            if (is_right_child(n)) {
-                n->parent->rhs = n->lhs;
-            } else {
-                n->parent->lhs = n->lhs;
-            }
-        } else {
-            if (is_right_child(n)) {
-                n->parent->rhs = n->rhs;
-            } else {
-                n->parent->lhs = n->rhs;
-            }
-        }
+    } else if (n->lhs) {
+        point_parent_to_new(n, n->lhs);
         free(n);
-    } else if (n->children == 2) {
+    } else if(n->rhs) {
+        point_parent_to_new(n, n->rhs);
+        free(n);
+    } else {
         struct node** max_left = max(n->lhs);
-
-        // swap only the data, and pass along found descendant after swapping
         swap(tree, node, max_left);
         delete(tree, node);
     }
@@ -250,17 +243,24 @@ int tree_remove(struct tree* tree, int data) {
     }
 
     struct node* node = node_find(tree->root, data);
-    // struct node* parent = node->parent;
 
     delete(tree, &node);
 
     return 0;
 }
 
+void node_print(struct node* node) {
+    if (node == NULL) {
+        return;
+    }
+
+    node_print(node->lhs);
+    printf("%d ", node->data);
+    node_print(node->rhs);
+}
+
 void tree_print(struct tree* tree) {
-
-    // ... SOME CODE MISSING HERE ...
-
+    node_print(tree->root);
 }
 
 void node_cleanup(struct node* node) {
