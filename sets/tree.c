@@ -13,9 +13,11 @@ struct tree {
 
 struct node {
     int data;
+
     struct node* lhs;
     struct node* rhs;
     struct node* parent;
+
     int children;
     // ... SOME CODE MISSING HERE ...
 
@@ -39,6 +41,8 @@ static node* make_node(int data) {
     node->data = data;
     node->lhs = NULL;
     node->rhs = NULL;
+    node->parent = NULL;
+    node->children = 0;
 
     return node;
 }
@@ -97,14 +101,20 @@ struct tree* tree_init(int turbo) {
 }
 
 _Bool has_children(struct node* node) {
-    return (node->lhs != NULL) || (node->rhs != NULL);
+    return node->children > 0;
 }
 
-void insert(struct node** current, struct node* new_node) {
+void insert(struct node** current, struct node* new_node, struct node* parent) {
     if (*current == NULL) {
+        new_node->parent = parent;
+        if (parent != NULL) {
+            parent->children++;
+        }
         *current = new_node;
         return;
     }
+    
+    parent = *current;
 
     if ( new_node->data < (*current)->data ) {
         current = &((*current)->lhs);
@@ -112,7 +122,7 @@ void insert(struct node** current, struct node* new_node) {
         current = &((*current)->rhs);
     }
 
-    insert(current, new_node);
+    insert(current, new_node, parent);
 }
 
 int tree_insert(struct tree* tree, int data) {
@@ -131,14 +141,14 @@ int tree_insert(struct tree* tree, int data) {
         return -1;
     }
 
-    insert(&(tree->root), node);
+    insert(&(tree->root), node, NULL);
     
     return 0;
 }
 
-int node_find(struct node* node, int data) {
+struct node* node_find(struct node* node, int data) {
     if (node == NULL) {
-        return 0;
+        return NULL;
     }
 
     if ( data > node->data) {
@@ -146,12 +156,92 @@ int node_find(struct node* node, int data) {
     } else if( data < node->data) {
         node_find(node->lhs, data);
     } else {
-        return 1;
+        return node;
     }
 }
 
 int tree_find(struct tree* tree, int data) {
-    return node_find(tree->root, data);
+    return node_find(tree->root, data) != NULL;
+}
+
+struct node** max(struct node* node) {
+    if ( node == NULL) {
+        return NULL;
+    }
+
+    while (node->rhs) {
+        node = node->rhs;
+    }
+
+    return &node;
+}
+
+_Bool is_right_child(struct node* n) {
+    if (n->parent == NULL) {
+        return false;
+    }
+
+    return n->data > n->parent->data;
+}
+
+void swap(struct tree* tree, struct node** n1, struct node** n2) {
+    struct node* tmp = (*n1);
+
+    (*n1)->lhs = (*n2)->lhs;
+    (*n1)->rhs = (*n2)->rhs;
+    (*n1)->parent = (*n2)->parent;
+    (*n1)->children = (*n2)->children;
+
+    // corner case where to be swapped is root
+    if ((*n1)->parent == NULL) {
+        tree->root = *n2;
+    } else if (is_right_child(*n1)) {
+        (*n1)->parent->rhs = *n2;
+    } else {
+        (*n1)->parent->lhs = *n2;
+    }
+
+    (*n2)->lhs = tmp->lhs;
+    (*n2)->rhs = tmp->rhs;
+    (*n2)->parent = tmp->parent;
+    (*n2)->children = tmp->children;
+
+    // n2 is always right child
+    (*n2)->parent->rhs = *n1;
+}
+
+void delete(struct tree* tree, struct node** node)  {
+    struct node* n = *node;
+    
+    if (!has_children(n)) {
+        if (is_right_child(n)) {
+            n->parent->rhs = NULL;
+        } else {
+            n->parent->lhs = NULL;
+        }
+        free(n);
+    } else if (n->children == 1) {
+        if (n->lhs != NULL) {
+            if (is_right_child(n)) {
+                n->parent->rhs = n->lhs;
+            } else {
+                n->parent->lhs = n->lhs;
+            }
+        } else {
+            if (is_right_child(n)) {
+                n->parent->rhs = n->rhs;
+            } else {
+                n->parent->lhs = n->rhs;
+            }
+        }
+        free(n);
+    } else if (n->children == 2) {
+        struct node** max_left = max(n->lhs);
+
+        // swap only the data, and pass along found descendant after swapping
+        swap(tree, node, max_left);
+        delete(tree, node);
+    }
 }
 
 int tree_remove(struct tree* tree, int data) {
@@ -159,7 +249,12 @@ int tree_remove(struct tree* tree, int data) {
         return 1;
     }
 
-    struct node* node = tree_find(tree, data);
+    struct node* node = node_find(tree->root, data);
+    // struct node* parent = node->parent;
+
+    delete(tree, &node);
+
+    return 0;
 }
 
 void tree_print(struct tree* tree) {
