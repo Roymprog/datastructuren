@@ -13,9 +13,9 @@ struct tree {
 
 struct node {
     int data;
-    struct node *lhs;
-    struct node *rhs;
-
+    struct node* lhs;
+    struct node* rhs;
+    struct node* parent;
     int children;
     // ... SOME CODE MISSING HERE ...
 
@@ -28,7 +28,7 @@ static int global_node_counter = 0;
 /* Helper function: Allocate a new tree node and initialise it with
  * the given parameters. Return a pointer to the new node or NULL on
  * failure. */
-static node *make_node(int data) {
+static node* make_node(int data) {
 
     node* node = malloc(sizeof(struct node));
 
@@ -43,7 +43,7 @@ static node *make_node(int data) {
     return node;
 }
 
-static int print_tree_dot_r(node *root, FILE *dotf) {
+static int print_tree_dot_r(node* root, FILE* dotf) {
     int left_id, right_id, my_id = global_node_counter++;
 
     if (root == NULL) {
@@ -63,7 +63,7 @@ static int print_tree_dot_r(node *root, FILE *dotf) {
     return my_id;
 }
 
-void tree_dot(struct tree *tree, char *filename) {
+void tree_dot(struct tree* tree, char* filename) {
     node *root = tree->root;
     global_node_counter = 0;
     FILE *dotf = fopen(filename, "w");
@@ -84,8 +84,7 @@ int tree_check(struct tree *tree) {
 
 }
 
-struct tree *tree_init(int turbo) {
-    printf("initializing tree\n");
+struct tree* tree_init(int turbo) {
     struct tree* tree = malloc(sizeof(struct tree));
 
     if ( tree == NULL) {
@@ -102,25 +101,21 @@ _Bool has_children(struct node* node) {
 }
 
 void insert(struct node** current, struct node* new_node) {
-            printf("running insert\n");
-
     if (*current == NULL) {
-        printf("inserting new node\n");
         *current = new_node;
         return;
     }
 
     if ( new_node->data < (*current)->data ) {
-        printf("lhs");
-        insert(&((*current)->lhs), new_node);
+        current = &((*current)->lhs);
     } else {
-        printf("rhs");
-        insert(&((*current)->rhs), new_node);
+        current = &((*current)->rhs);
     }
+
+    insert(current, new_node);
 }
 
-int tree_insert(struct tree *tree, int data) {
-    printf("running tree insert\n");
+int tree_insert(struct tree* tree, int data) {
     if ( tree == NULL ) {
         return -1;
     }
@@ -132,8 +127,6 @@ int tree_insert(struct tree *tree, int data) {
     struct node* node = make_node(data);
 
     if (node == NULL) {
-            printf("node is null");
-
         tree_cleanup(tree);
         return -1;
     }
@@ -157,17 +150,19 @@ int node_find(struct node* node, int data) {
     }
 }
 
-int tree_find(struct tree *tree, int data) {
+int tree_find(struct tree* tree, int data) {
     return node_find(tree->root, data);
 }
 
-int tree_remove(struct tree *tree, int data) {
+int tree_remove(struct tree* tree, int data) {
+    if (tree == NULL || tree_find(tree, data) == 0) {
+        return 1;
+    }
 
-    // ... SOME CODE MISSING HERE ...
-
+    struct node* node = tree_find(tree, data);
 }
 
-void tree_print(struct tree *tree) {
+void tree_print(struct tree* tree) {
 
     // ... SOME CODE MISSING HERE ...
 
@@ -184,11 +179,10 @@ void node_cleanup(struct node* node) {
     free(node);
 }
 
-void tree_cleanup(struct tree *tree) {
+void tree_cleanup(struct tree* tree) {
     if ( tree == NULL ) {
         return;
     }
-    printf("cleaning up\n");
     node_cleanup(tree->root);
 
     free(tree);
