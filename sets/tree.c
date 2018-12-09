@@ -236,7 +236,7 @@ void node_print(struct node* node) {
     }
 
     node_print(node->lhs);
-    printf("%d ", node->data);
+    printf("%d\n", node->data);
     node_print(node->rhs);
 }
 
