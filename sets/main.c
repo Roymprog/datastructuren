@@ -45,8 +45,28 @@ int main(void) {
                 exit_failure(buf, s);
             }
         }
+
         switch (*command) {
-            // ... SOME CODE MISSING HERE ...
+            case '+':
+                set_insert(s, num);
+                break;
+
+            case '-':
+                set_remove(s,num);
+                break;
+
+            case 'p':
+                set_print(s);
+                break;
+
+            case '?':
+                if (set_find(s, num) == 0) {
+                    printf("not found: %d\n", num);
+                } else {
+                    printf("found: %d\n", num);
+                }
+                break;
+            
         }
     }
 

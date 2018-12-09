@@ -84,7 +84,7 @@ void tree_dot(struct tree* tree, char* filename) {
 
 int tree_check(struct tree *tree) {
 
-    // ... SOME CODE MISSING HERE ...
+    return 0;
 
 }
 
@@ -186,7 +186,7 @@ _Bool is_right_child(struct node* n) {
 
 // Replaces the node that parent of n points at by node "new"
 // depending on whether n is the left child or the right child
-void point_parent_to_new(struct node* n, struct node* new) {
+void set_parent_pointer(struct node* n, struct node* new) {
     if (is_right_child(n)) {
         n->parent->rhs = new;
     } else {
@@ -206,7 +206,7 @@ void swap(struct tree* tree, struct node** n1, struct node** n2) {
     if ((*n1)->parent == NULL) {
         tree->root = *n2;
     } else {
-        point_parent_to_new(*n1, *n2);
+        set_parent_pointer(*n1, *n2);
     }
 
     (*n2)->lhs = tmp->lhs;
@@ -222,13 +222,13 @@ void delete(struct tree* tree, struct node** node)  {
     struct node* n = *node;
     
     if (!has_children(n)) {
-        point_parent_to_new(n, NULL);
+        set_parent_pointer(n, NULL);
         free(n);
     } else if (n->lhs) {
-        point_parent_to_new(n, n->lhs);
+        set_parent_pointer(n, n->lhs);
         free(n);
     } else if(n->rhs) {
-        point_parent_to_new(n, n->rhs);
+        set_parent_pointer(n, n->rhs);
         free(n);
     } else {
         struct node** max_left = max(n->lhs);
