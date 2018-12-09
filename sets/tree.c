@@ -164,7 +164,7 @@ int tree_find(struct tree* tree, int data) {
     return node_find(tree->root, data) != NULL;
 }
 
-struct node** max(struct node* node) {
+struct node* max(struct node* node) {
     if ( node == NULL) {
         return NULL;
     }
@@ -173,7 +173,7 @@ struct node** max(struct node* node) {
         node = node->rhs;
     }
 
-    return &node;
+    return node;
 }
 
 _Bool is_right_child(struct node* n) {
@@ -194,33 +194,13 @@ void set_parent_pointer(struct node* n, struct node* new) {
     }
 }
 
-void swap(struct tree* tree, struct node** n1, struct node** n2) {
-    struct node* tmp = (*n1);
-
-    (*n1)->lhs = (*n2)->lhs;
-    (*n1)->rhs = (*n2)->rhs;
-    (*n1)->parent = (*n2)->parent;
-    (*n1)->children = (*n2)->children;
-
-    // corner case where to be swapped is root
-    if ((*n1)->parent == NULL) {
-        tree->root = *n2;
-    } else {
-        set_parent_pointer(*n1, *n2);
-    }
-
-    (*n2)->lhs = tmp->lhs;
-    (*n2)->rhs = tmp->rhs;
-    (*n2)->parent = tmp->parent;
-    (*n2)->children = tmp->children;
-
-    // n2 is always the right child of its parent
-    (*n2)->parent->rhs = *n1;
+void swap_data(struct node* n1, struct node* n2) {
+    int tmp_data = n1->data;
+    n1->data = n2->data;
+    n2->data = tmp_data;
 }
 
-void delete(struct tree* tree, struct node** node)  {
-    struct node* n = *node;
-    
+void delete(struct node* n)  {
     if (!has_children(n)) {
         set_parent_pointer(n, NULL);
         free(n);
@@ -231,9 +211,10 @@ void delete(struct tree* tree, struct node** node)  {
         set_parent_pointer(n, n->rhs);
         free(n);
     } else {
-        struct node** max_left = max(n->lhs);
-        swap(tree, node, max_left);
-        delete(tree, node);
+        // only swap data and delete the highest node on lhs
+        struct node* max_left = max(n->lhs);
+        swap_data(n, max_left);
+        delete(max_left);
     }
 }
 
@@ -244,7 +225,7 @@ int tree_remove(struct tree* tree, int data) {
 
     struct node* node = node_find(tree->root, data);
 
-    delete(tree, &node);
+    delete(node);
 
     return 0;
 }
