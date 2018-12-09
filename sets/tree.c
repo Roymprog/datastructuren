@@ -152,12 +152,12 @@ struct node* node_find(struct node* node, int data) {
     }
 
     if ( data > node->data) {
-        node_find(node->rhs, data);
+        return node_find(node->rhs, data);
     } else if( data < node->data) {
-        node_find(node->lhs, data);
-    } else {
-        return node;
-    }
+        return node_find(node->lhs, data);
+    } 
+    
+    return node;
 }
 
 int tree_find(struct tree* tree, int data) {
