@@ -5,6 +5,10 @@
 
 #include "tree.h"
 
+/* Implements a tree datastructure representing a Binary Search Tree(BST).
+*  Expects integers as data and orders them based on their relative value
+*/
+
 /* C files can be modified anywhere.
  * So you can change or remove these structs to suit your needs. */
 struct tree {
@@ -19,7 +23,6 @@ struct node {
     struct node* parent;
 
     int children;
-    // ... SOME CODE MISSING HERE ...
 
 };
 typedef struct node node;
@@ -82,12 +85,39 @@ void tree_dot(struct tree* tree, char* filename) {
     fprintf(dotf, "}\n");
 }
 
+/* Recursively validates the tree. Call this function with a status
+*  code of 0. The function will set the status code to 1 if one of the
+*  lhs or rhs children is greater or equal, or smaller or equal, respectively
+*/
+void tree_check_r(struct node* node, int* status_code) {
+    if ( node == NULL ) {
+        return;
+    }
+
+    if ((node->lhs != NULL && node->data <= node->lhs->data) || 
+        (node->rhs != NULL && node->data >= node->rhs->data)) {
+
+        *status_code = 1;
+    }
+
+    tree_check_r(node->lhs, status_code);
+    tree_check_r(node->rhs, status_code);
+}
+
+/* Calls the recursive tree check function providing the root
+*  of the tree and returns the status_code accordingly
+*/
 int tree_check(struct tree *tree) {
 
-    return 0;
+    int status_code = 0;
+
+    tree_check_r(tree->root, &status_code);
+
+    return status_code;
 
 }
 
+// Initialized tree and checks 
 struct tree* tree_init(int turbo) {
     struct tree* tree = malloc(sizeof(struct tree));
 
@@ -100,11 +130,14 @@ struct tree* tree_init(int turbo) {
     return tree;
 }
 
+// Returns true if has children, false if none present
 _Bool has_children(struct node* node) {
     return node->children > 0;
 }
 
+// Inserts new node recursively
 void insert(struct node** current, struct node* new_node, struct node* parent) {
+    // Termination step
     if (*current == NULL) {
         new_node->parent = parent;
         if (parent != NULL) {
@@ -114,8 +147,10 @@ void insert(struct node** current, struct node* new_node, struct node* parent) {
         return;
     }
     
+    // Not at bottom of tree yet, move parent a level down
     parent = *current;
 
+    // Move current a level down depending on the children's value
     if ( new_node->data < (*current)->data ) {
         current = &((*current)->lhs);
     } else {
@@ -125,6 +160,7 @@ void insert(struct node** current, struct node* new_node, struct node* parent) {
     insert(current, new_node, parent);
 }
 
+// Inserts data in a node in the tree if data is not yet in tree
 int tree_insert(struct tree* tree, int data) {
     if ( tree == NULL ) {
         return -1;
@@ -146,6 +182,7 @@ int tree_insert(struct tree* tree, int data) {
     return 0;
 }
 
+// Recursively find a node or NULL if not found
 struct node* node_find(struct node* node, int data) {
     if (node == NULL) {
         return NULL;
@@ -160,10 +197,12 @@ struct node* node_find(struct node* node, int data) {
     return node;
 }
 
+// Call recursive node_find function from root of tree
 int tree_find(struct tree* tree, int data) {
     return node_find(tree->root, data) != NULL;
 }
 
+// Find max value in tree by traversing right all the way down
 struct node* max(struct node* node) {
     if ( node == NULL) {
         return NULL;
@@ -176,6 +215,7 @@ struct node* max(struct node* node) {
     return node;
 }
 
+// Returns true if node is right child of parent, returns false if left child 
 _Bool is_right_child(struct node* n) {
     if (n->parent == NULL) {
         return false;
@@ -184,8 +224,9 @@ _Bool is_right_child(struct node* n) {
     return n->data > n->parent->data;
 }
 
-// Replaces the node that parent of n points at by node "new"
-// depending on whether n is the left child or the right child
+/* Replaces the node that parent of n points at by node "new"
+* depending on whether n is the left child or the right child
+*/
 void set_parent_pointer(struct node* n, struct node* new) {
     if (is_right_child(n)) {
         n->parent->rhs = new;
@@ -194,12 +235,15 @@ void set_parent_pointer(struct node* n, struct node* new) {
     }
 }
 
+// Swaps data of two nodes
 void swap_data(struct node* n1, struct node* n2) {
     int tmp_data = n1->data;
     n1->data = n2->data;
     n2->data = tmp_data;
 }
 
+/* Deletes the provided node knowing the node is present in tree 
+*/
 void delete(struct node* n)  {
     if (!has_children(n)) {
         set_parent_pointer(n, NULL);
@@ -211,13 +255,16 @@ void delete(struct node* n)  {
         set_parent_pointer(n, n->rhs);
         free(n);
     } else {
-        // only swap data and delete the highest node on lhs
+        // Reduce problem down to one of the above 3 cases,
+        // only swap data and delete the node with largest value on lhs
         struct node* max_left = max(n->lhs);
         swap_data(n, max_left);
         delete(max_left);
     }
 }
 
+/*Removes node with corresponding data from tree if 
+  node with int data is present in tree*/
 int tree_remove(struct tree* tree, int data) {
     if (tree == NULL || tree_find(tree, data) == 0) {
         return 1;
@@ -230,6 +277,7 @@ int tree_remove(struct tree* tree, int data) {
     return 0;
 }
 
+// Prints node data in order
 void node_print(struct node* node) {
     if (node == NULL) {
         return;
@@ -240,10 +288,12 @@ void node_print(struct node* node) {
     node_print(node->rhs);
 }
 
+// Prints tree in order
 void tree_print(struct tree* tree) {
     node_print(tree->root);
 }
 
+// Recursively clean up node and children
 void node_cleanup(struct node* node) {
     if ( node == NULL) {
         return;
@@ -255,6 +305,7 @@ void node_cleanup(struct node* node) {
     free(node);
 }
 
+// Recursively cleans up tree from bottom up
 void tree_cleanup(struct tree* tree) {
     if ( tree == NULL ) {
         return;

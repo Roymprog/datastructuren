@@ -5,6 +5,11 @@
 #include "set.h"
 #include "tree.h"
 
+/* Implements a set of integers ordered in a tree based on the implementation
+*  in tree.c. For more detailed documentation on function implementation, also
+*  see tree.c
+*/
+
 struct set {
     struct tree* tree;
 };
@@ -61,6 +66,6 @@ void set_print(struct set *s) {
 
 int set_verify(struct set *s) {
 
-    // ... SOME CODE MISSING HERE ...
     return tree_check(s->tree);
+
 }

@@ -7,6 +7,15 @@
 
 #define BUF_SIZE 256
 
+/* The program reads input from stdin based and creates a set based on some simple 
+*  rules. Each input line is parsed until EOF is reached. The program loads the 
+*  parsed input into a tree structure based on the implementation in tree.c. 
+*  Integers can be added to the tree by providing a "+ [data]" line. Removing data 
+*  is done by a "- [data]" line. All current values in the tree are printed in 
+*  order when a line contains "p". Checking whether data is currently in the tree 
+*  can be done by an input line of "? [data]"
+*/
+
 void exit_failure(char *buf, struct set *s) {
     if (s) {
         set_cleanup(s);
@@ -23,7 +32,10 @@ int main(void) {
     }
     struct set *s = set_init(0); // initialize a set with turbo turned off.
 
-    // ... SOME CODE MISSING HERE ...
+    if ( s == NULL ) {
+        free(buf);
+        return EXIT_FAILURE;
+    }
 
     while (fgets(buf, BUF_SIZE, stdin)) {
         char *endptr;
@@ -46,9 +58,12 @@ int main(void) {
             }
         }
 
+        // Deal with operators
         switch (*command) {
             case '+':
-                set_insert(s, num);
+                if( set_insert(s, num) == -1) {
+                    exit_failure(buf, s);
+                }
                 break;
 
             case '-':
@@ -65,15 +80,17 @@ int main(void) {
                 } else {
                     printf("found: %d\n", num);
                 }
-                break;
-            
+                break;        
         }
     }
 
-    if (set_verify(s)) { // Debug function
+    if ( set_verify(s) == 1 ) { // Debug function
         fprintf(stderr, "Set implementation failed verification!\n");
     }
+
+    // Clean up properly after success;
     free(buf);
     set_cleanup(s);
+
     return EXIT_SUCCESS;
 }
