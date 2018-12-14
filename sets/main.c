@@ -25,24 +25,28 @@ void exit_failure(char *buf, struct set *s) {
 }
 
 int main(void) {
+    // Allocate buffer for line input
     char *buf = malloc(BUF_SIZE);
     if (!buf) {
         perror("Could not allocate input buffer");
         return EXIT_FAILURE;
     }
-    struct set *s = set_init(0); // initialize a set with turbo turned off.
+
+    // Initialize set and deal with malloc failure
+    struct set *s = set_init(0);
 
     if ( s == NULL ) {
         free(buf);
         return EXIT_FAILURE;
     }
 
+    // Read input till EOF is reached
     while (fgets(buf, BUF_SIZE, stdin)) {
         char *endptr;
         char *command;
         char *num_str;
         int num;
-
+        
         command = strtok(buf, " ");  // get command: +,-,?,p
         if (strchr("+-?", *command)) { // operation with operand
             num_str = strtok(NULL, "\n");
